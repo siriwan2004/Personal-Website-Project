@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Pastel Portfolio</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/app.js" defer></script>
+</head>
+
+<body class="theme-2" data-page="projects">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">PastelSite</a>
+    <nav class="nav">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link is-active" href="projects.html">Projects</a>
+      <a class="nav-link" href="cv.html">CV</a>
+      <a class="nav-link" href="gallery.html">Gallery</a>
+    </nav>
+    <button class="nav-toggle">☰</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="card">
+  <h1>Pastel Mood Generator</h1>
+  <p>Click the button to randomize pastel themes.</p>
+
+  <div class="btn-row">
+    <button class="btn" id="btnRandom">Random Theme</button>
+    <button class="btn btn-ghost" id="btnReset">Reset</button>
+  </div>
+
+  <div class="mood-box" id="moodBox"></div>
+  <p>Current Mode: <strong id="moodName">Theme 2 (Default)</strong></p>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    © <span id="year"></span> Your Name
+  </div>
+</footer>
+
+</body>
+</html>

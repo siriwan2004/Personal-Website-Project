@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--
+    หน้าแรก (Homepage) ของโปรเจกต์ Personal Website
+    โครงสร้างใช้ Semantic HTML (header / main / section / footer)
+    ดีไซน์: โครงแบบ portfolio ในคลิป + มี animation ตอน scroll (Intersection Observer)
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>PastelSite | Home</title>
+
+  <!-- CSS หลัก -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/home.css">
+
+  <!-- JS (defer เพื่อไม่บล็อกการโหลดหน้าเว็บ) -->
+  <script src="assets/js/app.js" defer></script>
+</head>
+
+<body class="theme-1" data-page="home" id="top">
+
+  <!-- HEADER: โลโก้ซ้าย / เมนูกลาง / ปุ่มขวา -->
+  <header class="site-header reveal">
+    <div class="container header-inner header-portfolio">
+
+      <!-- โลโก้ -->
+      <a class="brand" href="index.html">My Website</a>
+
+      <!-- เมนู -->
+      <nav class="nav nav-center" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="index.html">Home</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link" href="cv.html">About me</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+      </nav>
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="content" class="container">
+
+    <!-- HERO: ซ้ายข้อความ/ปุ่ม / ขวารูป+blob -->
+    <section class="hero hero-portfolio">
+      <div class="hero-grid">
+
+        <!-- ซ้าย: คงข้อมูลเดิม -->
+        <div class="hero-left reveal-left">
+          <p class="hero-kicker">Hello, my name is</p>
+
+          <h1 class="hero-title">
+            Hello, I'm <span class="hero-accent">Siriwan Phuttharasu</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Welcome to my personal website.
+          </p>
+
+         <!-- Social Icons -->
+<div class="social-row" aria-label="Social links">
+
+  <a class="social-btn"
+     href="https://facebook.com/yourprofile"
+     target="_blank"
+     aria-label="Facebook">
+     <i class="fa-brands fa-facebook-f"></i>
+  </a>
+
+  <a class="social-btn"
+     href="mailto:your@email.com"
+     aria-label="Email">
+     <i class="fa-solid fa-envelope"></i>
+  </a>
+
+  <a class="social-btn"
+     href="https://instagram.com/yourprofile"
+     target="_blank"
+     aria-label="Instagram">
+     <i class="fa-brands fa-instagram"></i>
+  </a>
+
+</div>
+
+        <!-- ขวา: รูป + blob -->
+        <div class="hero-right reveal-right">
+          <div class="photo-wrap">
+            <div class="blob" aria-hidden="true"></div>
+
+            <img
+              class="photo"
+              src="assets/images/profile.webp"
+              alt="Profile photo of Siriwan Phuttharasu"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+      </div>
+    </section>
+ 
+  <!-- FOOTER -->
+  <footer class="site-footer reveal">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Siriwan Phuttharasu</p>
+    </div>
+  </footer>
+
+</body>
+</html>
