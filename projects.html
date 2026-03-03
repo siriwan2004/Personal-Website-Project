@@ -4,8 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects | Pastel Portfolio</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/projects.css" />
+
+  <!-- JS -->
   <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/game.js" defer></script>
 </head>
 
 <body class="theme-2" data-page="projects">
@@ -19,23 +25,81 @@
       <a class="nav-link" href="cv.html">CV</a>
       <a class="nav-link" href="gallery.html">Gallery</a>
     </nav>
-    <button class="nav-toggle">☰</button>
+    <button class="nav-toggle" type="button" aria-label="Toggle menu">☰</button>
   </div>
 </header>
 
 <main class="container">
 
-<section class="card">
-  <h1>Pastel Mood Generator</h1>
-  <p>Click the button to randomize pastel themes.</p>
+  <!-- ===== Tic Tac Toe Game ===== -->
+ <section class="card">
+  <h2>Tic Tac Toe Game</h2>
+  <p>Play XO directly in the browser.</p>
 
-  <div class="btn-row">
-    <button class="btn" id="btnRandom">Random Theme</button>
-    <button class="btn btn-ghost" id="btnReset">Reset</button>
+  <div class="ttt-wrap">
+    <!-- LEFT: board -->
+    <div class="ttt-left">
+      <div class="ttt-status" id="tttStatus">Turn: X</div>
+
+      <div class="ttt-board" id="tttBoard">
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+        <button class="ttt-cell" type="button"></button>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" id="tttRestart" type="button">Restart Game</button>
+        <button class="btn btn-ghost" id="tttResetScore" type="button">Reset Score</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: winner + scoreboard -->
+    <aside class="ttt-right" aria-label="Game info">
+      <div class="ttt-panel">
+        <h3 class="ttt-panel-title">Scoreboard</h3>
+
+        <div class="ttt-score">
+          <div class="ttt-score-item">
+            <span class="ttt-badge x">X</span>
+            <div>
+              <div class="ttt-label">Player X</div>
+              <div class="ttt-num" id="tttScoreX">0</div>
+            </div>
+          </div>
+
+          <div class="ttt-score-item">
+            <span class="ttt-badge o">O</span>
+            <div>
+              <div class="ttt-label">Player O</div>
+              <div class="ttt-num" id="tttScoreO">0</div>
+            </div>
+          </div>
+
+          <div class="ttt-score-item">
+            <span class="ttt-badge d">=</span>
+            <div>
+              <div class="ttt-label">Draw</div>
+              <div class="ttt-num" id="tttScoreD">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ttt-winner" id="tttWinner">
+          <div class="ttt-winner-title">Winner</div>
+          <div class="ttt-winner-box">
+            <span id="tttWinnerText">—</span>
+          </div>
+          <div class="ttt-hint" id="tttHint">Make 3 in a row to win.</div>
+        </div>
+      </div>
+    </aside>
   </div>
-
-  <div class="mood-box" id="moodBox"></div>
-  <p>Current Mode: <strong id="moodName">Theme 2 (Default)</strong></p>
 </section>
 
 </main>

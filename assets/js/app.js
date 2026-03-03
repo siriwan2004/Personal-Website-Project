@@ -52,3 +52,10 @@ if ("IntersectionObserver" in window) {
   // browser เก่า: แสดงเลย ไม่ต้อง animate
   revealEls.forEach((el) => el.classList.add("is-visible"));
 }
+// ===== Page entrance animation (safe & smooth) =====
+window.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+
+  hero.classList.add("enter");
+});
