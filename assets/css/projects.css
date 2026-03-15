@@ -1,159 +1,216 @@
-/* ===== Tic Tac Toe ===== */
+/* ============================================================
+   1. GLOBAL & ANIMATIONS
+   ============================================================ */
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-40px); filter: blur(10px); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
 
-.ttt-board{
-  margin-top: 16px;
+@keyframes winPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+.reveal-left-1 { animation: slideFromLeft 1s ease-out forwards; animation-delay: 0.1s; opacity: 0; }
+.reveal-left-2 { animation: slideFromLeft 1s ease-out forwards; animation-delay: 0.3s; opacity: 0; }
+
+/* ============================================================
+   2. HEADER STYLE (PILL SHAPE - ตามรูปภาพ)
+   ============================================================ */
+.site-header {
+  padding: 25px 0;
+  background: transparent;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ฝั่งซ้าย: Logo & Text */
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 55px;
+  height: 55px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  object-fit: contain;
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2d3748;
+  letter-spacing: -0.5px;
+}
+
+/* ฝั่งขวา: Navigation Capsule */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.3); /* ขาวใส */
+  backdrop-filter: blur(15px);
+  padding: 7px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.nav-item {
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d3748;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ปุ่มที่เลือกอยู่ (Active) */
+.nav-item.is-active {
+  background: #ffffff;
+  color: #5a67d8; /* สีม่วงน้ำเงินตามรูป */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item:hover:not(.is-active) {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================
+   3. TIC TAC TOE GAME STYLE
+   ============================================================ */
+.ttt-wrap {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 320px;
-}
-
-.ttt-cell{
-  aspect-ratio: 1/1;
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 12px;
-  border: 2px solid #e5e7eb;
-  background: #ffffffaa;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.ttt-cell:hover{
-  transform: translateY(-2px);
-}
-
-.ttt-status{
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-/* ===== Tic Tac Toe layout (left board + right panel) ===== */
-.ttt-wrap{
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 18px;
+  grid-template-columns: auto 320px;
+  gap: 50px;
+  justify-content: center;
   align-items: start;
+  margin-top: 40px;
 }
 
-@media (max-width: 860px){
-  .ttt-wrap{
-    grid-template-columns: 1fr;
-  }
+.ttt-status {
+  margin-bottom: 25px;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #1e293b;
 }
 
 /* Board */
-.ttt-status{
-  margin-top: 10px;
-  font-weight: 700;
-}
-
-.ttt-board{
-  margin-top: 14px;
+.ttt-board {
   display: grid;
-  grid-template-columns: repeat(3, 92px);
-  gap: 12px;
+  grid-template-columns: repeat(3, 110px);
+  gap: 15px;
 }
 
-@media (max-width: 480px){
-  .ttt-board{
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.ttt-cell{
-  aspect-ratio: 1/1;
-  font-size: 2.2rem;
+.ttt-cell {
+  width: 110px;
+  height: 110px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #ffffff;
+  border-radius: 25px;
+  font-size: 2.8rem;
   font-weight: 900;
-  border-radius: 14px;
-  border: 2px solid rgba(255,255,255,.6);
-  background: rgba(255,255,255,.55);
   cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-
-.ttt-cell:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(0,0,0,.10);
-}
-
-/* Winner highlight */
-.ttt-cell.win{
-  outline: 3px solid rgba(34,197,94,.9);
-  box-shadow: 0 0 0 6px rgba(34,197,94,.18);
-}
-
-/* Right panel */
-.ttt-panel{
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.28);
-  border: 1px solid rgba(255,255,255,.35);
-  backdrop-filter: blur(8px);
-}
-
-.ttt-panel-title{
-  margin: 0 0 12px 0;
-  font-size: 1rem;
-  font-weight: 800;
-}
-
-.ttt-score{
-  display: grid;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.ttt-score-item{
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
   display: flex;
-  gap: 10px;
   align-items: center;
-  padding: 10px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.35);
-  border: 1px solid rgba(255,255,255,.35);
+  justify-content: center;
 }
 
-.ttt-badge{
-  width: 38px; height: 38px;
-  display: grid; place-items: center;
-  border-radius: 12px;
-  font-weight: 900;
-  background: rgba(255,255,255,.7);
+.ttt-cell:hover:not(:disabled) {
+  transform: translateY(-8px);
+  background: #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
-.ttt-badge.x{ color: #2563eb; }
-.ttt-badge.o{ color: #f59e0b; }
-.ttt-badge.d{ color: #0f172a; }
+.ttt-cell[data-value="X"] { color: #3b82f6; }
+.ttt-cell[data-value="O"] { color: #f59e0b; }
 
-.ttt-label{
-  font-size: .85rem;
-  opacity: .8;
+.ttt-cell.win {
+  background: #22c55e !important;
+  color: #ffffff !important;
+  border-color: #22c55e;
+  animation: winPulse 0.6s infinite alternate;
 }
 
-.ttt-num{
-  font-size: 1.4rem;
-  font-weight: 900;
-  line-height: 1.1;
+/* Scoreboard Panel */
+.ttt-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 35px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
-.ttt-winner-title{
-  font-size: .85rem;
-  opacity: .8;
-  margin-bottom: 8px;
+.ttt-score-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 22px;
+  margin-bottom: 12px;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
 
-.ttt-winner-box{
-  border-radius: 14px;
-  padding: 14px;
-  background: rgba(255,255,255,.45);
-  border: 1px solid rgba(255,255,255,.40);
-  font-size: 1.15rem;
-  font-weight: 900;
-}
+.ttt-score-item:hover { transform: translateX(10px); }
 
-.ttt-hint{
-  margin-top: 10px;
-  font-size: .85rem;
-  opacity: .8;
+.ttt-badge {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center; font-weight: 900;
+}
+.ttt-badge.x { background: #eff6ff; color: #3b82f6; }
+.ttt-badge.o { background: #fffbeb; color: #f59e0b; }
+.ttt-badge.d { background: #f8fafc; color: #64748b; }
+
+.ttt-num { font-size: 1.6rem; font-weight: 900; }
+
+/* ============================================================
+   4. RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .ttt-wrap {
+    grid-template-columns: 1fr;
+  }
+  
+  .ttt-board {
+    justify-content: center;
+  }
+  
+  .ttt-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    overflow-x: auto;
+  }
 }

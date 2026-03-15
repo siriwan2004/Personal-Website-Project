@@ -5,110 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects | Pastel Portfolio</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/projects.css" />
 
-  <!-- JS -->
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/game.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.nav-toggle');
+      const mainNav = document.querySelector('.nav');
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mainNav.classList.toggle('active');
+          
+          // สลับข้อความหรือไอคอน (ใน HTML เดิมใช้ ☰)
+          if (mainNav.classList.contains('active')) {
+            menuToggle.textContent = '✕'; 
+          } else {
+            menuToggle.textContent = '☰';
+          }
+        });
+
+        // คลิกที่อื่นเพื่อปิดเมนูอัตโนมัติ
+        document.addEventListener('click', (e) => {
+          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+            mainNav.classList.remove('active');
+            menuToggle.textContent = '☰';
+          }
+        });
+      }
+    });
+  </script>
 </head>
 
 <body class="theme-2" data-page="projects">
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html">PastelSite</a>
+    <a class="brand-group" href="index.html">
+      <img src="assets\images\pisces-sign.png" alt="Logo" class="brand-logo">
+      <span class="brand-text">My Personal Website.</span>
+    </a>
     <nav class="nav">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link is-active" href="projects.html">Projects</a>
-      <a class="nav-link" href="cv.html">CV</a>
-      <a class="nav-link" href="gallery.html">Gallery</a>
+      <a class="nav-link nav-item is-active" href="index.html">Home</a>
+      <a class="nav-link nav-item" href="projects.html">Projects</a>
+      <a class="nav-link nav-item" href="cv.html">About me</a>
+      <a class="nav-link nav-item" href="contact.html">Contact</a>
+      <a class="nav-link nav-item" href="gallery.html">Gallery</a>
     </nav>
     <button class="nav-toggle" type="button" aria-label="Toggle menu">☰</button>
   </div>
 </header>
 
 <main class="container">
+  <section class="card">
+    <h2>Tic Tac Toe Game</h2>
+    <p>Play XO directly in the browser.</p>
 
-  <!-- ===== Tic Tac Toe Game ===== -->
- <section class="card">
-  <h2>Tic Tac Toe Game</h2>
-  <p>Play XO directly in the browser.</p>
+    <div class="ttt-wrap">
+      <div class="ttt-left">
+        <div class="ttt-status" id="tttStatus">Turn: X</div>
 
-  <div class="ttt-wrap">
-    <!-- LEFT: board -->
-    <div class="ttt-left">
-      <div class="ttt-status" id="tttStatus">Turn: X</div>
+        <div class="ttt-board" id="tttBoard">
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+          <button class="ttt-cell" type="button"></button>
+        </div>
 
-      <div class="ttt-board" id="tttBoard">
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
-        <button class="ttt-cell" type="button"></button>
+        <div class="btn-row">
+          <button class="btn" id="tttRestart" type="button">Restart Game</button>
+          <button class="btn btn-ghost" id="tttResetScore" type="button">Reset Score</button>
+        </div>
       </div>
 
-      <div class="btn-row">
-        <button class="btn" id="tttRestart" type="button">Restart Game</button>
-        <button class="btn btn-ghost" id="tttResetScore" type="button">Reset Score</button>
-      </div>
+      <aside class="ttt-right" aria-label="Game info">
+        <div class="ttt-panel">
+          <h3 class="ttt-panel-title">Scoreboard</h3>
+          <div class="ttt-score">
+            <div class="ttt-score-item">
+              <span class="ttt-badge x">X</span>
+              <div>
+                <div class="ttt-label">Player X</div>
+                <div class="ttt-num" id="tttScoreX">0</div>
+              </div>
+            </div>
+            <div class="ttt-score-item">
+              <span class="ttt-badge o">O</span>
+              <div>
+                <div class="ttt-label">Player O</div>
+                <div class="ttt-num" id="tttScoreO">0</div>
+              </div>
+            </div>
+            <div class="ttt-score-item">
+              <span class="ttt-badge d">=</span>
+              <div>
+                <div class="ttt-label">Draw</div>
+                <div class="ttt-num" id="tttScoreD">0</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ttt-winner" id="tttWinner">
+            <div class="ttt-winner-title">Winner</div>
+            <div class="ttt-winner-box">
+              <span id="tttWinnerText">—</span>
+            </div>
+            <div class="ttt-hint" id="tttHint">Make 3 in a row to win.</div>
+          </div>
+        </div>
+      </aside>
     </div>
-
-    <!-- RIGHT: winner + scoreboard -->
-    <aside class="ttt-right" aria-label="Game info">
-      <div class="ttt-panel">
-        <h3 class="ttt-panel-title">Scoreboard</h3>
-
-        <div class="ttt-score">
-          <div class="ttt-score-item">
-            <span class="ttt-badge x">X</span>
-            <div>
-              <div class="ttt-label">Player X</div>
-              <div class="ttt-num" id="tttScoreX">0</div>
-            </div>
-          </div>
-
-          <div class="ttt-score-item">
-            <span class="ttt-badge o">O</span>
-            <div>
-              <div class="ttt-label">Player O</div>
-              <div class="ttt-num" id="tttScoreO">0</div>
-            </div>
-          </div>
-
-          <div class="ttt-score-item">
-            <span class="ttt-badge d">=</span>
-            <div>
-              <div class="ttt-label">Draw</div>
-              <div class="ttt-num" id="tttScoreD">0</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ttt-winner" id="tttWinner">
-          <div class="ttt-winner-title">Winner</div>
-          <div class="ttt-winner-box">
-            <span id="tttWinnerText">—</span>
-          </div>
-          <div class="ttt-hint" id="tttHint">Make 3 in a row to win.</div>
-        </div>
-      </div>
-    </aside>
-  </div>
-</section>
-
+  </section>
 </main>
-
-<footer class="site-footer">
-  <div class="container">
-    © <span id="year"></span> Your Name
-  </div>
-</footer>
 
 </body>
 </html>
