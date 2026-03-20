@@ -1,0 +1,165 @@
+/* ============================================================
+   1. SHARED VARIABLES & ANIMATIONS
+   ============================================================ */
+:root {
+  --p1: #ffcfe2;
+  --p2: #d1d1ff;
+  --p3: #e2f9ff;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --primary-grad: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-nav: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes navSlideIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+    filter: blur(5px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+    filter: blur(0); 
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   2. SITE HEADER & NAVIGATION (ทำงานเหมือนกันทุกหน้า)
+   ============================================================ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 20px 0;
+  background: transparent;
+}
+
+.header-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+/* Logo Style */
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.brand-group:hover .brand-logo {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #1e293b 0%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nav Pill Style (Glassmorphism) */
+.nav {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.3); /* ขาวใสแบบ Glass */
+  padding: 6px;
+  border-radius: 100px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.nav-item {
+  opacity: 0; /* เริ่มต้นที่ 0 เพื่อเล่น Animation */
+  padding: 10px 25px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  transition: all 0.3s var(--ease-nav);
+  animation: navSlideIn 0.8s var(--ease-nav) forwards;
+}
+
+/* Delay สำหรับแต่ละปุ่มเพื่อให้สไลด์เรียงกัน */
+.nav-item:nth-child(1) { animation-delay: 0.2s; }
+.nav-item:nth-child(2) { animation-delay: 0.3s; }
+.nav-item:nth-child(3) { animation-delay: 0.4s; }
+.nav-item:nth-child(4) { animation-delay: 0.5s; }
+
+/* สไตล์เมื่อ Hover หรือเป็นหน้าปัจจุบัน */
+.nav-item:hover, 
+.nav-item.is-active {
+  background: #ffffff;
+  color: #6366f1; /* สีม่วงน้ำเงินเด่นขึ้นมา */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 10px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* ============================================================
+   3. RESPONSIVE NAVIGATION
+   ============================================================ */
+@media (max-width: 992px) {
+  .menu-toggle { display: block; }
+  
+  .nav {
+    display: none;
+    position: absolute;
+    top: 90px;
+    right: 40px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border-radius: 25px;
+    width: 200px;
+    gap: 10px;
+  }
+
+  .nav.active {
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .nav-item { 
+    opacity: 1; 
+    animation: none; 
+    text-align: center; 
+    width: 100%;
+  }
+}

@@ -4,8 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gallery | Pastel Portfolio</title>
+  
   <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/projects.css" />
+
   <script src="assets/js/app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.nav-toggle');
+      const mainNav = document.querySelector('.nav');
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mainNav.classList.toggle('active');
+          menuToggle.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+        });
+      }
+    });
+  </script>
 </head>
 
 <body class="theme-4" data-page="gallery">
@@ -13,31 +29,63 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand-group" href="index.html">
-      <img src="assets\images\pisces-sign.png" alt="Logo" class="brand-logo">
+      <div class="brand-logo">
+        <img src="assets/images/pisces-sign.png" alt="Logo">
+      </div>
       <span class="brand-text">My Personal Website.</span>
     </a>
+
     <nav class="nav">
-      <a class="nav-link nav-item is-active" href="index.html">Home</a>
-      <a class="nav-link nav-item" href="projects.html">Projects</a>
-      <a class="nav-link nav-item" href="cv.html">About me</a>
-      <a class="nav-link nav-item" href="contact.html">Contact</a>
-      <a class="nav-link nav-item" href="gallery.html">Gallery</a>
+      <a class="nav-item" href="index.html">Home</a>
+      <a class="nav-item" href="projects.html">Projects</a>
+      <a class="nav-item" href="cv.html">About me</a>
+      <a class="nav-item" href="contact.html">Contact</a>
+      <a class="nav-item is-active" href="gallery.html">Gallery</a>
     </nav>
-    <button class="nav-toggle">☰</button>
+
+    <button class="nav-toggle" type="button">☰</button>
   </div>
 </header>
 
-<main class="container">
+<main class="container reveal-left-1">
+  <div class="gallery-header" style="margin-top: 40px; margin-bottom: 30px;">
+    <h1 style="font-weight: 900; color: #1e293b; font-size: 2.5rem;">Gallery</h1>
+    <p style="color: #64748b;">Collections of my precious moments and digital arts.</p>
+  </div>
 
-<h1>Gallery</h1>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <div class="gallery-thumb thumb-1"></div>
+      <div class="gallery-info">
+        <h3>Memories 01</h3>
+        <span>Photography</span>
+      </div>
+    </div>
 
-<div class="grid gallery">
-  <div class="card thumb-1"></div>
-  <div class="card thumb-2"></div>
-  <div class="card thumb-3"></div>
-  <div class="card thumb-4"></div>
-</div>
+    <div class="gallery-card">
+      <div class="gallery-thumb thumb-2"></div>
+      <div class="gallery-info">
+        <h3>Digital Art</h3>
+        <span>Illustration</span>
+      </div>
+    </div>
 
+    <div class="gallery-card">
+      <div class="gallery-thumb thumb-3"></div>
+      <div class="gallery-info">
+        <h3>Travel Vibe</h3>
+        <span>Nature</span>
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <div class="gallery-thumb thumb-4"></div>
+      <div class="gallery-info">
+        <h3>Pastel Theme</h3>
+        <span>Design</span>
+      </div>
+    </div>
+  </div>
 </main>
 
 </body>
