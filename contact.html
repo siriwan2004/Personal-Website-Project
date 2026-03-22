@@ -3,67 +3,143 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact | Pastel Portfolio</title>
+  <title>Contact | Siriwan Portfolio</title>
+
   <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/index.css">
   <link rel="stylesheet" href="assets/css/contact.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
   <script src="assets/js/app.js" defer></script>
 </head>
 
-<body class="theme-3" data-page="contact">
+<body class="theme-3" data-page="contact" id="top">
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand-group" href="index.html">
-      <img src="assets/images/pisces-sign.png" alt="Logo" class="brand-logo">
-      <span class="brand-text">My Personal Website.</span>
-    </a>
+  <div class="static-bg"></div>
 
-    <nav class="nav">
-      <a class="nav-link nav-item" href="index.html">Home</a>
-      <a class="nav-link nav-item" href="projects.html">Projects</a>
-      <a class="nav-link nav-item" href="cv.html">About me</a>
-      <a class="nav-link nav-item is-active" href="contact.html">Contact</a>
-      <a class="nav-link nav-item" href="gallery.html">Gallery</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand-group" href="index.html">
+        <img src="assets/images/pisces-sign.png" alt="Logo" class="brand-logo">
+        <span class="brand-text">My Personal Website.</span>
+      </a>
 
-    <button class="nav-toggle">☰</button>
-  </div>
-</header>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-<main class="container">
+      <nav class="nav" id="main-nav">
+        <a class="nav-link nav-item" href="index.html">Home</a>
+        <a class="nav-link nav-item" href="projects.html">Projects</a>
+        <a class="nav-link nav-item" href="cv.html">About me</a>
+        <a class="nav-link nav-item is-active" href="contact.html">Contact</a>
+        <a class="nav-link nav-item" href="gallery.html">Gallery</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="contact-layout">
+  <main id="content">
+    <section class="hero-section"> <div class="hero-glass-container" style="display: block; padding: 50px;">
+        
+        <div class="contact-header" style="text-align: center; margin-bottom: 40px;">
+          <h1 class="hero-title" style="opacity: 1; transform: none; font-size: clamp(2.5rem, 5vw, 3.5rem);">
+            Get in <span class="grad-text">Touch</span>
+          </h1>
+          <p class="hero-subtitle" style="opacity: 1; transform: none; margin: 0 auto;">
+            Feel free to reach out. I'll get back to you as soon as possible!
+          </p>
+        </div>
 
-<div class="card">
-<h2>Contact Me</h2>
-<p>If you would like to get in touch, feel free to send me a message.</p>
+        <section class="contact-layout" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px;">
+          
+          <div class="card" style="background: rgba(255, 255, 255, 0.5); border-radius: 30px; padding: 35px; border: 1px solid rgba(255, 255, 255, 0.7);">
+            <h2 style="margin-bottom: 20px; color: var(--text-dark);">Contact Me</h2>
+            
+            <form class="contact-form" style="display: flex; flex-direction: column; gap: 15px;">
+              <div>
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Name</label>
+                <input type="text" placeholder="Your name" required style="width: 100%; padding: 12px 20px; border-radius: 15px; border: 1px solid #ddd; outline: none; background: #fff;">
+              </div>
 
-<form class="contact-form">
-<label>Name</label>
-<input type="text" placeholder="Your name" required>
+              <div>
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Email</label>
+                <input type="email" placeholder="Your email" required style="width: 100%; padding: 12px 20px; border-radius: 15px; border: 1px solid #ddd; outline: none; background: #fff;">
+              </div>
 
-<label>Email</label>
-<input type="email" placeholder="Your email" required>
+              <div>
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Message</label>
+                <textarea rows="4" placeholder="Write your message" style="width: 100%; padding: 12px 20px; border-radius: 15px; border: 1px solid #ddd; outline: none; background: #fff; resize: none;"></textarea>
+              </div>
 
-<label>Message</label>
-<textarea rows="4" placeholder="Write your message"></textarea>
+              <button type="submit" class="social-btn" style="width: 100%; height: auto; padding: 15px; border-radius: 50px; border: none; font-weight: 700; background: var(--primary-grad); color: #fff; cursor: pointer;">
+                Send Message
+              </button>
+            </form>
+          </div>
 
-<button type="submit">Send Message</button>
-</form>
-</div>
+          <div class="card" style="background: rgba(255, 255, 255, 0.4); border-radius: 30px; padding: 35px; border: 1px solid rgba(255, 255, 255, 0.7);">
+            <h2 style="margin-bottom: 20px; color: var(--text-dark);">My Information</h2>
 
-<div class="card">
-<h2>My Contact Information</h2>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="social-btn" style="width: 45px; height: 45px; pointer-events: none;"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <p style="font-size: 0.9rem; color: #64748b;">Email</p>
+                  <p style="font-weight: 600;">yourname@email.com</p>
+                </div>
+              </div>
 
-<p><strong>Email:</strong> yourname@email.com</p>
-<p><strong>GitHub:</strong> github.com/yourusername</p>
-<p><strong>Location:</strong> Thailand</p>
+              <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="social-btn" style="width: 45px; height: 45px; pointer-events: none;"><i class="fa-brands fa-github"></i></div>
+                <div>
+                  <p style="font-size: 0.9rem; color: #64748b;">GitHub</p>
+                  <p style="font-weight: 600;">github.com/yourusername</p>
+                </div>
+              </div>
 
-</div>
+              <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="social-btn" style="width: 45px; height: 45px; pointer-events: none;"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <p style="font-size: 0.9rem; color: #64748b;">Location</p>
+                  <p style="font-weight: 600;">Thailand</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-</section>
+        </section> </div> </section>
+  </main>
 
-</main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mainNav = document.getElementById('main-nav');
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mainNav.classList.toggle('active');
+          const icon = menuToggle.querySelector('i');
+          if (icon) {
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+            mainNav.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-xmark');
+            }
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

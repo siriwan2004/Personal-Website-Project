@@ -3,90 +3,120 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery | Pastel Portfolio</title>
+  <title>Gallery | Siriwan Portfolio</title>
   
   <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/index.css">
   <link rel="stylesheet" href="assets/css/projects.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <script src="assets/js/app.js" defer></script>
+</head>
+
+<body class="theme-4" data-page="gallery" id="top">
+
+  <div class="static-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand-group" href="index.html">
+        <img src="assets/images/pisces-sign.png" alt="Logo" class="brand-logo">
+        <span class="brand-text">My Personal Website.</span>
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="nav" id="main-nav">
+        <a class="nav-link nav-item" href="index.html">Home</a>
+        <a class="nav-link nav-item" href="projects.html">Projects</a>
+        <a class="nav-link nav-item" href="cv.html">About me</a>
+        <a class="nav-link nav-item" href="contact.html">Contact</a>
+        <a class="nav-link nav-item is-active" href="gallery.html">Gallery</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero-section"> <div class="hero-glass-container" style="display: block; padding: 50px;">
+        
+        <div class="gallery-header" style="text-align: center; margin-bottom: 40px;">
+          <h1 class="hero-title" style="opacity: 1; transform: none; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 10px;">
+            My <span class="grad-text">Gallery</span>
+          </h1>
+          <p class="hero-subtitle" style="opacity: 1; transform: none; margin: 0 auto;">
+            Collections of my precious moments and digital arts.
+          </p>
+        </div>
+
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+          
+          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7); transition: 0.3s;">
+            <div class="gallery-thumb thumb-1" style="height: 200px; background: #eee;"></div>
+            <div class="gallery-info" style="padding: 20px;">
+              <h3 style="color: var(--text-dark);">Memories 01</h3>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Photography</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7);">
+            <div class="gallery-thumb thumb-2" style="height: 200px; background: #eee;"></div>
+            <div class="gallery-info" style="padding: 20px;">
+              <h3 style="color: var(--text-dark);">Digital Art</h3>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Illustration</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7);">
+            <div class="gallery-thumb thumb-3" style="height: 200px; background: #eee;"></div>
+            <div class="gallery-info" style="padding: 20px;">
+              <h3 style="color: var(--text-dark);">Travel Vibe</h3>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Nature</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7);">
+            <div class="gallery-thumb thumb-4" style="height: 200px; background: #eee;"></div>
+            <div class="gallery-info" style="padding: 20px;">
+              <h3 style="color: var(--text-dark);">Pastel Theme</h3>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Design</span>
+            </div>
+          </div>
+
+        </div> </div> </section>
+  </main>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const menuToggle = document.querySelector('.nav-toggle');
-      const mainNav = document.querySelector('.nav');
+      const menuToggle = document.getElementById('menu-toggle');
+      const mainNav = document.getElementById('main-nav');
+
       if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', (e) => {
           e.stopPropagation();
           mainNav.classList.toggle('active');
-          menuToggle.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+          const icon = menuToggle.querySelector('i');
+          if (icon) {
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+            mainNav.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-xmark');
+            }
+          }
         });
       }
     });
   </script>
-</head>
-
-<body class="theme-4" data-page="gallery">
-
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand-group" href="index.html">
-      <div class="brand-logo">
-        <img src="assets/images/pisces-sign.png" alt="Logo">
-      </div>
-      <span class="brand-text">My Personal Website.</span>
-    </a>
-
-    <nav class="nav">
-      <a class="nav-item" href="index.html">Home</a>
-      <a class="nav-item" href="projects.html">Projects</a>
-      <a class="nav-item" href="cv.html">About me</a>
-      <a class="nav-item" href="contact.html">Contact</a>
-      <a class="nav-item is-active" href="gallery.html">Gallery</a>
-    </nav>
-
-    <button class="nav-toggle" type="button">☰</button>
-  </div>
-</header>
-
-<main class="container reveal-left-1">
-  <div class="gallery-header" style="margin-top: 40px; margin-bottom: 30px;">
-    <h1 style="font-weight: 900; color: #1e293b; font-size: 2.5rem;">Gallery</h1>
-    <p style="color: #64748b;">Collections of my precious moments and digital arts.</p>
-  </div>
-
-  <div class="gallery-grid">
-    <div class="gallery-card">
-      <div class="gallery-thumb thumb-1"></div>
-      <div class="gallery-info">
-        <h3>Memories 01</h3>
-        <span>Photography</span>
-      </div>
-    </div>
-
-    <div class="gallery-card">
-      <div class="gallery-thumb thumb-2"></div>
-      <div class="gallery-info">
-        <h3>Digital Art</h3>
-        <span>Illustration</span>
-      </div>
-    </div>
-
-    <div class="gallery-card">
-      <div class="gallery-thumb thumb-3"></div>
-      <div class="gallery-info">
-        <h3>Travel Vibe</h3>
-        <span>Nature</span>
-      </div>
-    </div>
-
-    <div class="gallery-card">
-      <div class="gallery-thumb thumb-4"></div>
-      <div class="gallery-info">
-        <h3>Pastel Theme</h3>
-        <span>Design</span>
-      </div>
-    </div>
-  </div>
-</main>
 
 </body>
 </html>

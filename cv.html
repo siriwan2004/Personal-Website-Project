@@ -1,46 +1,156 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CV | Pastel Portfolio</title>
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/cv.css" />
-  <script src="assets/js/app.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About me | Siriwan Portfolio</title>
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/cv.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <script src="assets/js/app.js" defer></script>
 </head>
 
-<body class="theme-3" data-page="cv">
+<body class="theme-3" data-page="cv" id="top">
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand-group" href="index.html">
-      <img src="assets\images\pisces-sign.png" alt="Logo" class="brand-logo">
-      <span class="brand-text">My Personal Website.</span>
-    </a>
-    <nav class="nav">
-      <a class="nav-link nav-item" href="index.html">Home</a>
-      <a class="nav-link nav-item" href="projects.html">Projects</a>
-      <a class="nav-link nav-item is-active" href="cv.html">About me</a> <a class="nav-link nav-item" href="contact.html">Contact</a>
-      <a class="nav-link nav-item" href="gallery.html">Gallery</a>
-    </nav>
-    <button class="nav-toggle">☰</button>
-  </div>
-</header>
+    <div class="static-bg"></div>
 
-<main class="container">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand-group" href="index.html">
+                <img src="assets/images/pisces-sign.png" alt="Logo" class="brand-logo">
+                <span class="brand-text">My Personal Website.</span>
+            </a>
 
-<section class="cv-layout">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-  <div class="card">
-    <h2>Education</h2>
-    <p>University Name</p>
+            <nav class="nav" id="main-nav">
+                <a class="nav-link nav-item" href="index.html">Home</a>
+                <a class="nav-link nav-item" href="projects.html">Projects</a>
+                <a class="nav-link nav-item is-active" href="cv.html">About me</a>
+                <a class="nav-link nav-item" href="contact.html">Contact</a>
+                <a class="nav-link nav-item" href="gallery.html">Gallery</a>
+            </nav>
+        </div>
+    </header>
 
-    <h2>Skills</h2>
-    <p>HTML, CSS, JavaScript</p>
-  </div>
-</section>
+    <main id="content">
+        <section class="hero-section"> 
+            <div class="hero-glass-container">
+                
+                <div class="cv-header">
+                    <h1 class="hero-title">
+                        About <span class="grad-text">Me</span>
+                    </h1>
+                </div>
 
-</main>
+                <div class="cv-card">
+                    <section class="cv-section">
+                        <h2 class="section-title">
+                            <i class="fa-solid fa-address-card"></i> Personal Information
+                        </h2>
+                        <div class="info-grid">
+                            <div class="info-item"><strong>Name:</strong> Siriwan Phuttharasu</div>
+                            <div class="info-item"><strong>Nickname:</strong> Ang</div>
+                            <div class="info-item"><strong>Birth:</strong> 24 February 2004</div>
+                            <div class="info-item"><strong>Age:</strong> 22 Years</div>
+                            <div class="info-item"><strong>Nationality:</strong> Thai</div>
+                        </div>
+                        
+                        <div class="bio-wrapper">
+                            <p class="bio-text">
+                                A highly driven, results-oriented individual with a bold and straightforward approach. Skilled in making quick, decisive decisions under pressure, with strong problem-solving abilities. Known for diligence, persistence, and a strong work ethic, I prioritize action over discussion and maintain integrity in all tasks.
+                            </p>
+                        </div>
+                    </section>
 
+                    <div class="divider"></div>
+
+                    <section class="cv-section">
+                        <h2 class="section-title">
+                            <i class="fa-solid fa-graduation-cap"></i> Education
+                        </h2>
+                        
+                        <div class="edu-timeline">
+                            <div class="edu-item current">
+                                <div class="edu-logo-wrapper">
+                                    <img src="assets/images/Seal_of_King_Mongkut's_Institute_of_Technology_Ladkrabang.png" alt="KMITL" class="edu-logo">
+                                </div>
+                                <div class="edu-content">
+                                    <h3 class="edu-name">King Mongkut’s Institute of Technology Ladkrabang</h3>
+                                    <p class="edu-major">Program of Engineering Education, Major in Computer</p>
+                                    <p class="edu-meta">School of Industrial Education and Technology | 2022 - Present</p>
+                                </div>
+                            </div>
+
+                            <div class="edu-item">
+                                <div class="edu-logo-wrapper">
+                                    <img src="assets/images/RattanaburiSchoolSeal.jpg" alt="Rattanaburi" class="edu-logo">
+                                </div>
+                                <div class="edu-content">
+                                    <h3 class="edu-name-small">Rattanaburi School</h3>
+                                    <p class="edu-meta">High School (Grade 10–12)</p>
+                                </div>
+                            </div>
+
+                            <div class="edu-item">
+                                <div class="edu-logo-wrapper">
+                                    <img src="assets/images/Naraikhampong.jpg" alt="Naraikhamkhongwittaya" class="edu-logo">
+                                </div>
+                                <div class="edu-content">
+                                    <h3 class="edu-name-small">Naraikhamkhongwittaya School</h3>
+                                    <p class="edu-meta">Junior High School (Grade 7–9)</p>
+                                </div>
+                            </div>
+
+                            <div class="edu-item">
+                                <div class="edu-logo-wrapper">
+                                    <img src="assets/images/bankhampong.jpg" alt="Bankhamphong" class="edu-logo">
+                                </div>
+                                <div class="edu-content">
+                                    <h3 class="edu-name-small">Bankhamphong School</h3>
+                                    <p class="edu-meta">Primary School (Grade 1–6)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div> 
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mainNav.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-bars');
+                        icon.classList.toggle('fa-xmark');
+                    }
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                        mainNav.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-xmark');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
