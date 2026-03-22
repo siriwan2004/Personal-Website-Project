@@ -1,327 +1,159 @@
-/* ============================================================
-   1. SHARED VARIABLES & ANIMATIONS
-   ============================================================ */
-:root {
-  --p1: #ffcfe2;
-  --p2: #d1d1ff;
-  --p3: #e2f9ff;
-  --text-dark: #0f172a;
-  --text-muted: #64748b;
-  --primary-grad: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-nav: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes navSlideIn {
-  from { opacity: 0; transform: translateY(-10px); filter: blur(5px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f8fafc;
-  color: var(--text-dark);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-
-.static-bg {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  z-index: -1;
-  background: linear-gradient(120deg, var(--p1), var(--p2), var(--p3));
-  opacity: 0.6;
-}
-
-/* ============================================================
-   2. SITE HEADER & NAVIGATION
-   ============================================================ */
-.site-header {
-  position: fixed;
-  top: 0; left: 0; width: 100%;
-  z-index: 100; padding: 20px 0;
-  background: transparent;
-}
-
-.header-inner {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-}
-
-.brand-group {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-decoration: none;
-}
-
-.brand-logo {
-  height: 60px;
-  width: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s var(--ease-out);
-}
-
-.brand-group:hover .brand-logo {
-  transform: scale(1.1) rotate(5deg);
-}
-
-.brand-text {
-  font-size: 1.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #1e293b 0%, #64748b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.nav {
-  display: flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.3);
-  padding: 6px;
-  border-radius: 100px;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-.nav-item {
-  padding: 10px 25px;
-  border-radius: 100px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  transition: all 0.3s var(--ease-nav);
-  animation: navSlideIn 0.8s var(--ease-nav) forwards;
-}
-
-.nav-item:hover, 
-.nav-item.is-active {
-  background: #ffffff;
-  color: #6366f1;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* ============================================================
-   3. CV PAGE SPECIFIC (ปรับปรุงใหม่เพื่อความสวยงามเต็มจอ)
-   ============================================================ */
-
+/* ===============================
+   HERO SECTION (แก้ layout หลัก)
+   =============================== */
 .hero-section {
-  padding: 140px 20px 80px;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 👈 ไม่ให้มันดันกลางเกิน */
+    padding-top: 120px; /* กัน header ทับ */
 }
 
+/* กล่องหลัก */
 .hero-glass-container {
-  width: 100%;
-  max-width: 1200px; /* ขยายให้กว้างขึ้น */
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 50px;
-  padding: 60px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
-  animation: fadeIn 1s var(--ease-out) forwards;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column; /* ✅ สำคัญ: เรียงบน-ล่าง */
+
+    gap: 30px;
+    padding: 40px;
+    
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(25px);
+    border-radius: 40px;
 }
 
-/* แบ่งหน้าจอเป็น 2 ฝั่งบนจอใหญ่ */
-.cv-layout-grid {
-  display: grid;
-  grid-template-columns: 350px 1fr;
-  gap: 60px;
-  align-items: start;
-}
-
-/* ฝั่งซ้าย: Profile & ข้อมูลย่อ */
-.cv-sidebar {
-  position: sticky;
-  top: 120px;
-}
-
+/* ===============================
+   HEADER (About Me)
+   =============================== */
 .cv-header {
-  margin-bottom: 40px;
+    width: 100%;
+    text-align: center;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 4vw, 3.8rem);
-  font-weight: 900;
-  line-height: 1.1;
-  color: var(--text-dark);
-  letter-spacing: -2px;
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0;
+    color: #0f172a;
 }
 
 .grad-text {
-  background: var(--primary-grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.info-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* ===============================
+   CARD CONTENT
+   =============================== */
+.cv-card {
+    width: 100%;
+    padding: 40px;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(20px);
 }
 
-.info-item {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 20px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  transition: all 0.3s var(--ease-out);
-}
-
-.info-item:hover {
-  transform: translateX(10px);
-  background: #fff;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-}
-
-.info-item strong {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-
-/* ฝั่งขวา: เนื้อหาหลัก */
-.cv-main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+/* ===============================
+   SECTION
+   =============================== */
+.cv-section {
+    margin-bottom: 30px;
 }
 
 .section-title {
-  font-size: 1.8rem;
-  font-weight: 800;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* ===============================
+   INFO GRID
+   =============================== */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-item {
+    background: rgba(255,255,255,0.6);
+    padding: 12px 15px;
+    border-radius: 12px;
+}
+
+/* ===============================
+   BIO
+   =============================== */
+.bio-wrapper {
+    margin-top: 20px;
 }
 
 .bio-text {
-  font-size: 1.15rem;
-  line-height: 1.9;
-  color: #475569;
-  padding: 35px;
-  background: white;
-  border-radius: 30px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.02);
-  position: relative;
-  overflow: hidden;
+    line-height: 1.6;
+    color: #334155;
 }
 
-.bio-text::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 6px;
-  background: var(--primary-grad);
-}
-
-/* Education Layout (2 Columns on Desktop) */
+/* ===============================
+   EDUCATION TIMELINE
+   =============================== */
 .edu-timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .edu-item {
-  background: rgba(255, 255, 255, 0.5);
-  padding: 30px;
-  border-radius: 30px;
-  transition: all 0.4s var(--ease-out);
-  border: 1px solid transparent;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
-.edu-item:hover {
-  background: #fff;
-  border-color: #6366f1;
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+.edu-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
-.edu-logo-wrapper {
-  width: 60px;
-  height: 60px;
-  background: #f1f5f9;
-  padding: 12px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-
-.edu-name {
-  font-size: 1.25rem;
-  font-weight: 800;
-  margin-bottom: 5px;
-}
-
-.edu-major {
-  color: #6366f1;
-  font-weight: 700;
-  margin-bottom: 8px;
+.edu-content h3 {
+    margin: 0;
 }
 
 .edu-meta {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+    font-size: 0.9rem;
+    color: #64748b;
 }
 
-/* ============================================================
-   4. RESPONSIVE (ห้ามแก้ไขส่วนนี้)
-   ============================================================ */
-@media (max-width: 1100px) {
-  .cv-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .cv-sidebar {
-    position: static;
-    text-align: center;
-  }
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    text-align: left;
-  }
+/* ===============================
+   DIVIDER
+   =============================== */
+.divider {
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    margin: 30px 0;
 }
 
+/* ===============================
+   RESPONSIVE
+   =============================== */
 @media (max-width: 768px) {
-  .hero-glass-container {
-    padding: 40px 20px;
-    border-radius: 35px;
-  }
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  .edu-timeline {
-    grid-template-columns: 1fr;
-  }
-  .nav {
-    display: none; /* ปิด Nav ปกติบนมือถือ */
-  }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-glass-container {
+        padding: 20px;
+    }
+
+    .cv-card {
+        padding: 20px;
+    }
 }
