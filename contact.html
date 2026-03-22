@@ -12,6 +12,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <script src="assets/js/app.js" defer></script>
+
+  <style>
+    /* สไตล์พิเศษสำหรับกลุ่มไอคอนขาว-ดำ */
+    .info-icon-bw {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #000000;
+      color: #000000;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .info-icon-bw:hover {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .info-text p {
+      margin: 0;
+    }
+
+    .info-label {
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .info-value {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 
 <body class="theme-3" data-page="contact" id="top">
@@ -40,7 +85,8 @@
   </header>
 
   <main id="content">
-    <section class="hero-section"> <div class="hero-glass-container" style="display: block; padding: 50px;">
+    <section class="hero-section"> 
+      <div class="hero-glass-container" style="display: block; padding: 50px;">
         
         <div class="contact-header" style="text-align: center; margin-bottom: 40px;">
           <h1 class="hero-title" style="opacity: 1; transform: none; font-size: clamp(2.5rem, 5vw, 3.5rem);">
@@ -79,39 +125,68 @@
           </div>
 
           <div class="card" style="background: rgba(255, 255, 255, 0.4); border-radius: 30px; padding: 35px; border: 1px solid rgba(255, 255, 255, 0.7);">
-            <h2 style="margin-bottom: 20px; color: var(--text-dark);">My Information</h2>
+            <h2 style="margin-bottom: 25px; color: var(--text-dark);">My Information</h2>
 
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-              <div style="display: flex; align-items: center; gap: 15px;">
-                <div class="social-btn" style="width: 45px; height: 45px; pointer-events: none;"><i class="fa-solid fa-envelope"></i></div>
-                <div>
-                  <p style="font-size: 0.9rem; color: #64748b;">Email</p>
-                  <p style="font-weight: 600;">yourname@email.com</p>
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+              
+              <div class="info-item">
+                <div class="info-icon-bw"><i class="fa-solid fa-envelope"></i></div>
+                <div class="info-text">
+                  <p class="info-label">Email</p>
+                  <p class="info-value">yourname@email.com</p>
                 </div>
               </div>
 
-              <div style="display: flex; align-items: center; gap: 15px;">
-                <div class="social-btn" style="width: 45px; height: 45px; pointer-events: none;"><i class="fa-brands fa-github"></i></div>
-                <div>
-                  <p style="font-size: 0.9rem; color: #64748b;">GitHub</p>
-                  <p style="font-weight: 600;">github.com/yourusername</p>
+              <div class="info-item">
+                <a href="https://github.com/yourusername" target="_blank" class="info-icon-bw"><i class="fa-brands fa-github"></i></a>
+                <div class="info-text">
+                  <p class="info-label">GitHub</p>
+                  <p class="info-value">github.com/yourusername</p>
                 </div>
               </div>
 
-              <div style="display: flex; align-items: center; gap: 15px;">
-                <div class="social-btn" style="width: 45px; height: 45px; pointer-events: none;"><i class="fa-solid fa-location-dot"></i></div>
-                <div>
-                  <p style="font-size: 0.9rem; color: #64748b;">Location</p>
-                  <p style="font-weight: 600;">Thailand</p>
+              <div class="info-item">
+                <a href="#" target="_blank" class="info-icon-bw"><i class="fa-brands fa-facebook-f"></i></a>
+                <div class="info-text">
+                  <p class="info-label">Facebook</p>
+                  <p class="info-value">Your Facebook Name</p>
                 </div>
               </div>
+
+              <div class="info-item">
+                <a href="#" target="_blank" class="info-icon-bw"><i class="fa-brands fa-instagram"></i></a>
+                <div class="info-text">
+                  <p class="info-label">Instagram</p>
+                  <p class="info-value">@yourusername</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <a href="#" target="_blank" class="info-icon-bw"><i class="fa-brands fa-line"></i></a>
+                <div class="info-text">
+                  <p class="info-label">Line ID</p>
+                  <p class="info-value">yourlineid</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon-bw"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-text">
+                  <p class="info-label">Location</p>
+                  <p class="info-value">Thailand</p>
+                </div>
+              </div>
+
             </div>
           </div>
 
-        </section> </div> </section>
+        </section> 
+      </div> 
+    </section>
   </main>
 
   <script>
+    // สคริปต์เปิด-ปิดเมนูมือถือ
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.getElementById('menu-toggle');
       const mainNav = document.getElementById('main-nav');

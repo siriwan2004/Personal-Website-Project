@@ -1,41 +1,56 @@
-/* ===============================
-   HERO SECTION (แก้ layout หลัก)
-   =============================== */
+/* ============================================================
+   0. GLOBAL SETTINGS & BACKGROUND
+   ============================================================ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* ไล่เฉดสีตามรูปภาพ: ส้มชมพู -> ม่วงชมพู -> ม่วงน้ำเงิน */
+    background: linear-gradient(180deg, #ffd1cc 0%, #f1ccf1 50%, #d1d1ff 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #0f172a;
+}
+
+/* ============================================================
+   1. HERO SECTION (Layout หลัก)
+   ============================================================ */
 .hero-section {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* 👈 ไม่ให้มันดันกลางเกิน */
-    padding-top: 120px; /* กัน header ทับ */
+    align-items: flex-start;
+    padding-top: 120px;
+    padding-bottom: 60px;
 }
 
-/* กล่องหลัก */
+/* กล่องหลัก Glassmorphism */
 .hero-glass-container {
-    width: 100%;
+    width: 90%;
     max-width: 1100px;
     margin: 0 auto;
-
     display: flex;
-    flex-direction: column; /* ✅ สำคัญ: เรียงบน-ล่าง */
-
+    flex-direction: column;
     gap: 30px;
     padding: 40px;
-    
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
 }
 
-/* ===============================
-   HEADER (About Me)
-   =============================== */
+/* ============================================================
+   2. HEADER & TITLES
+   ============================================================ */
 .cv-header {
     width: 100%;
     text-align: center;
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 800;
     margin: 0;
     color: #0f172a;
@@ -47,33 +62,39 @@
     -webkit-text-fill-color: transparent;
 }
 
-/* ===============================
-   CARD CONTENT
-   =============================== */
+/* ============================================================
+   3. CARD CONTENT
+   ============================================================ */
 .cv-card {
     width: 100%;
     padding: 40px;
     border-radius: 30px;
-
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-sizing: border-box;
 }
 
-/* ===============================
-   SECTION
-   =============================== */
 .cv-section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.cv-section:last-child {
+    margin-bottom: 0;
 }
 
 .section-title {
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* ===============================
-   INFO GRID
-   =============================== */
+/* ============================================================
+   4. INFO GRID & BIO
+   ============================================================ */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -81,79 +102,121 @@
 }
 
 .info-item {
-    background: rgba(255,255,255,0.6);
-    padding: 12px 15px;
-    border-radius: 12px;
-}
-
-/* ===============================
-   BIO
-   =============================== */
-.bio-wrapper {
-    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .bio-text {
-    line-height: 1.6;
+    line-height: 1.8;
     color: #334155;
+    font-size: 1.05rem;
 }
 
-/* ===============================
-   EDUCATION TIMELINE
-   =============================== */
+/* ============================================================
+   5. EDUCATION TIMELINE
+   ============================================================ */
 .edu-timeline {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .edu-item {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.edu-item:hover {
+    transform: translateX(10px);
 }
 
 .edu-logo {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
+    background: white;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .edu-content h3 {
-    margin: 0;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    color: #1e293b;
 }
 
 .edu-meta {
     font-size: 0.9rem;
     color: #64748b;
+    line-height: 1.5;
 }
 
-/* ===============================
-   DIVIDER
-   =============================== */
 .divider {
     height: 1px;
-    background: rgba(0,0,0,0.1);
-    margin: 30px 0;
+    background: rgba(0, 0, 0, 0.08);
+    margin: 35px 0;
 }
 
-/* ===============================
-   RESPONSIVE
-   =============================== */
+/* ============================================================
+   6. RESPONSIVE DESIGN (Education อยู่ตรงกลางเมื่อจอเล็ก)
+   ============================================================ */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
+    .hero-section {
+        padding-top: 100px;
+    }
+
+    .hero-glass-container {
+        padding: 25px 20px;
+        width: 92%;
+    }
+
+    .cv-card {
+        padding: 25px 20px;
     }
 
     .info-grid {
         grid-template-columns: 1fr;
     }
 
-    .hero-glass-container {
-        padding: 20px;
+    /* 👇 ย้ายการศึกษามาไว้ตรงกลางเมื่อจอเล็ก */
+    .edu-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
     }
 
-    .cv-card {
-        padding: 20px;
+    .edu-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .edu-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .edu-logo {
+        width: 85px;
+        height: 85px;
+    }
+
+    .edu-content h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
     }
 }
