@@ -8,55 +8,9 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/index.css">
   <link rel="stylesheet" href="assets/css/contact.css" />
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <script src="assets/js/app.js" defer></script>
-
-  <style>
-    /* สไตล์พิเศษสำหรับกลุ่มไอคอนขาว-ดำ */
-    .info-icon-bw {
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid #000000;
-      color: #000000;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .info-icon-bw:hover {
-      background: #000000;
-      color: #ffffff;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .info-text p {
-      margin: 0;
-    }
-
-    .info-label {
-      font-size: 0.9rem;
-      color: #64748b;
-    }
-
-    .info-value {
-      font-weight: 700;
-      color: #1e293b;
-      font-size: 1.1rem;
-    }
-  </style>
 </head>
 
 <body class="theme-3" data-page="contact" id="top">
@@ -86,94 +40,104 @@
 
   <main id="content">
     <section class="hero-section"> 
-      <div class="hero-glass-container" style="display: block; padding: 50px;">
+      <div class="hero-glass-container">
         
-        <div class="contact-header" style="text-align: center; margin-bottom: 40px;">
-          <h1 class="hero-title" style="opacity: 1; transform: none; font-size: clamp(2.5rem, 5vw, 3.5rem);">
-            Get in <span class="grad-text">Touch</span>
-          </h1>
-          <p class="hero-subtitle" style="opacity: 1; transform: none; margin: 0 auto;">
+        <div class="contact-header">
+          <h1 class="hero-title">Get in <span class="touch-text">touch</span></h1>
+          <p class="hero-subtitle">
             Feel free to reach out. I'll get back to you as soon as possible!
           </p>
         </div>
 
-        <section class="contact-layout" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px;">
+        <section class="contact-layout">
           
-          <div class="card" style="background: rgba(255, 255, 255, 0.5); border-radius: 30px; padding: 35px; border: 1px solid rgba(255, 255, 255, 0.7);">
-            <h2 style="margin-bottom: 20px; color: var(--text-dark);">Contact Me</h2>
-            
-            <form class="contact-form" style="display: flex; flex-direction: column; gap: 15px;">
-              <div>
-                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Name</label>
-                <input type="text" placeholder="Your name" required style="width: 100%; padding: 12px 20px; border-radius: 15px; border: 1px solid #ddd; outline: none; background: #fff;">
+          <div class="card">
+            <h2>Contact Me</h2>
+            <form action="https://script.google.com/macros/s/AKfycbyOh2qJWxnA4ZNHdoWKeI31uX4yfgizv_5EoJPuy7YBQpAReOKlqyBYNNiBnw9eLgbu/exec" 
+                  method="POST" 
+                  class="contact-form" 
+                  id="contact-form">
+              
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
               </div>
 
-              <div>
-                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Email</label>
-                <input type="email" placeholder="Your email" required style="width: 100%; padding: 12px 20px; border-radius: 15px; border: 1px solid #ddd; outline: none; background: #fff;">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
               </div>
 
-              <div>
-                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Message</label>
-                <textarea rows="4" placeholder="Write your message" style="width: 100%; padding: 12px 20px; border-radius: 15px; border: 1px solid #ddd; outline: none; background: #fff; resize: none;"></textarea>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
               </div>
 
-              <button type="submit" class="social-btn" style="width: 100%; height: auto; padding: 15px; border-radius: 50px; border: none; font-weight: 700; background: var(--primary-grad); color: #fff; cursor: pointer;">
+              <button type="submit" class="submit-btn" id="submit-btn">
                 Send Message
               </button>
             </form>
           </div>
 
-          <div class="card" style="background: rgba(255, 255, 255, 0.4); border-radius: 30px; padding: 35px; border: 1px solid rgba(255, 255, 255, 0.7);">
-            <h2 style="margin-bottom: 25px; color: var(--text-dark);">My Information</h2>
-
-            <div style="display: flex; flex-direction: column; gap: 25px;">
+          <div class="card">
+            <h2>My Information</h2>
+            <div class="info-list">
               
               <div class="info-item">
                 <div class="info-icon-bw"><i class="fa-solid fa-envelope"></i></div>
                 <div class="info-text">
                   <p class="info-label">Email</p>
-                  <p class="info-value">yourname@email.com</p>
+                  <p class="info-value">66030178@kmitl.ac.th</p>
                 </div>
               </div>
 
               <div class="info-item">
-                <a href="https://github.com/yourusername" target="_blank" class="info-icon-bw"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/siriwan2004" target="_blank" class="info-icon-bw">
+                  <i class="fa-brands fa-github"></i>
+                </a>
                 <div class="info-text">
                   <p class="info-label">GitHub</p>
-                  <p class="info-value">github.com/yourusername</p>
+                  <p class="info-value">github.com/siriwan2004</p>
                 </div>
               </div>
 
               <div class="info-item">
-                <a href="#" target="_blank" class="info-icon-bw"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" target="_blank" class="info-icon-bw">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
                 <div class="info-text">
                   <p class="info-label">Facebook</p>
-                  <p class="info-value">Your Facebook Name</p>
+                  <p class="info-value">Siriwan Phuttharasu</p>
                 </div>
               </div>
 
               <div class="info-item">
-                <a href="#" target="_blank" class="info-icon-bw"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" class="info-icon-bw">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
                 <div class="info-text">
                   <p class="info-label">Instagram</p>
-                  <p class="info-value">@yourusername</p>
+                  <p class="info-value">_aswpm</p>
                 </div>
               </div>
 
               <div class="info-item">
-                <a href="#" target="_blank" class="info-icon-bw"><i class="fa-brands fa-line"></i></a>
+                <a href="#" target="_blank" class="info-icon-bw">
+                  <i class="fa-brands fa-line"></i>
+                </a>
                 <div class="info-text">
                   <p class="info-label">Line ID</p>
-                  <p class="info-value">yourlineid</p>
+                  <p class="info-value">mars_sp</p>
                 </div>
               </div>
 
               <div class="info-item">
-                <div class="info-icon-bw"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-icon-bw">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
                 <div class="info-text">
                   <p class="info-label">Location</p>
-                  <p class="info-value">Thailand</p>
+                  <p class="info-value">Nonnarai, Surin, Thailand</p>
                 </div>
               </div>
 
@@ -186,11 +150,10 @@
   </main>
 
   <script>
-    // สคริปต์เปิด-ปิดเมนูมือถือ
+    // ส่วนควบคุมเมนูมือถือ
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.getElementById('menu-toggle');
       const mainNav = document.getElementById('main-nav');
-
       if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -201,20 +164,32 @@
             icon.classList.toggle('fa-xmark');
           }
         });
-
-        document.addEventListener('click', (e) => {
-          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-            mainNav.classList.remove('active');
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-xmark');
-            }
-          }
-        });
       }
+
+      // จุดที่ 2: สคริปต์ส่งข้อมูลเข้าอีเมลโดยตรงแบบไม่รีเฟรชหน้า
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyOh2qJWxnA4ZNHdoWKeI31uX4yfgizv_5EoJPuy7YBQpAReOKlqyBYNNiBnw9eLgbu/exec';
+      const form = document.getElementById('contact-form');
+      const btn = document.getElementById('submit-btn');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault(); // ป้องกันการรีโหลดหน้า
+        btn.disabled = true;
+        btn.innerText = 'Sending...';
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            alert("Sending your message was successful! Thank you for reaching out.");
+            btn.disabled = false;
+            btn.innerText = 'Send Message';
+            form.reset();
+          })
+          .catch(error => {
+            alert("An error occurred while sending your message. Please try again later.");
+            btn.disabled = false;
+            btn.innerText = 'Send Message';
+          });
+      });
     });
   </script>
-
 </body>
 </html>

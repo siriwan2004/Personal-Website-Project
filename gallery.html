@@ -3,13 +3,90 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery | Siriwan Portfolio</title>
+  <title>China Journey | Siriwan Portfolio</title>
   
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/index.css">
-  <link rel="stylesheet" href="assets/css/projects.css" />
-  
+  <link rel="stylesheet" href="assets/css/gallery.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* 1. เปลี่ยนสีพื้นหลังตามรูปภาพที่ระบุ */
+    body {
+      background: linear-gradient(180deg, #f7f1c1 0%, #ffcada 50%, #fbbfff 100%) !important;
+      background-attachment: fixed;
+      margin: 0;
+    }
+
+    /* 2. จัด Layout ให้แสดงเป็นคู่ (Workspace & Team คู่กับ Chinese / Landmarks คู่กับ Daily Life) */
+    .gallery-grid {
+      display: grid !important;
+      /* หน้าจอใหญ่แบ่ง 2 คอลัมน์เท่ากัน */
+      grid-template-columns: repeat(2, 1fr) !important; 
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* 3. Responsive: ถ้าหน้าจอแคบ (เช่นย่อเหลือ 1/4 หรือมือถือ) ให้เรียงยาวแนวตั้ง */
+    @media (max-width: 992px) {
+      .gallery-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* --- สไตล์ดั้งเดิมของคุณ (คงไว้ 100%) --- */
+    .china-card {
+      background: rgba(255, 255, 255, 0.4) !important; 
+      border-radius: 25px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .china-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .card-image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 4px;
+      padding: 4px;
+      height: 280px;
+    }
+
+    .grid-thumb {
+      background-size: cover;
+      background-position: center;
+      background-color: #f0f0f0;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .china-card:hover .grid-thumb {
+      transform: scale(1.02);
+    }
+    
+    .grad-text {
+      background: linear-gradient(90deg, #e63946, #f4a261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gallery-info h3 {
+      font-size: 1.5rem; /* ปรับขนาดให้เด่นขึ้นหลังจากเอา Tag ออก */
+      margin: 0;
+      font-weight: 800;
+    }
+  </style>
 
   <script src="assets/js/app.js" defer></script>
 </head>
@@ -40,59 +117,77 @@
   </header>
 
   <main id="content">
-    <section class="hero-section"> <div class="hero-glass-container" style="display: block; padding: 50px;">
+    <section class="hero-section">
+      <div class="hero-glass-container" style="display: block; padding: 50px 20px;">
         
-        <div class="gallery-header" style="text-align: center; margin-bottom: 40px;">
-          <h1 class="hero-title" style="opacity: 1; transform: none; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 10px;">
-            My <span class="grad-text">Gallery</span>
+        <div class="gallery-header" style="text-align: center; margin-bottom: 50px;">
+          <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 15px; font-weight: 800;">
+            My <span class="grad-text">Journey</span>
           </h1>
-          <p class="hero-subtitle" style="opacity: 1; transform: none; margin: 0 auto;">
-            Collections of my precious moments and digital arts.
+          <p class="hero-subtitle" style="margin: 0 auto; max-width: 600px; line-height: 1.6; color: var(--text-muted);">
+            Experiences from Internship in China 2025 <br>
           </p>
         </div>
 
-        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+        <div class="gallery-grid">
           
-          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7); transition: 0.3s;">
-            <div class="gallery-thumb thumb-1" style="height: 200px; background: #eee;"></div>
-            <div class="gallery-info" style="padding: 20px;">
-              <h3 style="color: var(--text-dark);">Memories 01</h3>
-              <span style="color: var(--text-muted); font-size: 0.9rem;">Photography</span>
+          <div class="gallery-card china-card">
+            <div class="card-image-grid">
+              <div class="grid-thumb" style="background-image: url('assets/images/office-1.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/office-2.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/team-1.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/team-2.jpg');"></div>
+            </div>
+            <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
+              <h3 style="color: var(--text-dark);">Workspace & Team</h3>
             </div>
           </div>
 
-          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7);">
-            <div class="gallery-thumb thumb-2" style="height: 200px; background: #eee;"></div>
-            <div class="gallery-info" style="padding: 20px;">
-              <h3 style="color: var(--text-dark);">Digital Art</h3>
-              <span style="color: var(--text-muted); font-size: 0.9rem;">Illustration</span>
+          <div class="gallery-card china-card">
+            <div class="card-image-grid">
+              <div class="grid-thumb" style="background-image: url('assets/images/food-mala.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/food-tanghulu.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/food-dumplings.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/food-local.jpg');"></div>
+            </div>
+            <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
+              <h3 style="color: var(--text-dark);">Chinese Cuisine</h3>
             </div>
           </div>
 
-          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7);">
-            <div class="gallery-thumb thumb-3" style="height: 200px; background: #eee;"></div>
-            <div class="gallery-info" style="padding: 20px;">
-              <h3 style="color: var(--text-dark);">Travel Vibe</h3>
-              <span style="color: var(--text-muted); font-size: 0.9rem;">Nature</span>
+          <div class="gallery-card china-card">
+            <div class="card-image-grid">
+              <div class="grid-thumb" style="background-image: url('assets/images/landmark-wall.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/landmark-palace.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/landmark-tower.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/landmark-modern.jpg');"></div>
+            </div>
+            <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
+              <h3 style="color: var(--text-dark);">Landmarks</h3>
             </div>
           </div>
 
-          <div class="gallery-card" style="background: rgba(255, 255, 255, 0.5); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.7);">
-            <div class="gallery-thumb thumb-4" style="height: 200px; background: #eee;"></div>
-            <div class="gallery-info" style="padding: 20px;">
-              <h3 style="color: var(--text-dark);">Pastel Theme</h3>
-              <span style="color: var(--text-muted); font-size: 0.9rem;">Design</span>
+          <div class="gallery-card china-card">
+            <div class="card-image-grid">
+              <div class="grid-thumb" style="background-image: url('assets/images/tech-train.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/tech-pay.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/daily-metro.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/daily-bike.jpg');"></div>
+            </div>
+            <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
+              <h3 style="color: var(--text-dark);">Daily Life</h3>
             </div>
           </div>
 
-        </div> </div> </section>
+        </div> 
+      </div> 
+    </section>
   </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.getElementById('menu-toggle');
       const mainNav = document.getElementById('main-nav');
-
       if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -103,7 +198,6 @@
             icon.classList.toggle('fa-xmark');
           }
         });
-
         document.addEventListener('click', (e) => {
           if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
             mainNav.classList.remove('active');

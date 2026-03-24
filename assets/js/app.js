@@ -1,22 +1,14 @@
 /*
   app.js
   ไฟล์นี้เพิ่มลูกเล่นให้เว็บไซต์ (เว็บยังใช้งานได้แม้ไม่มี JS)
-  ทำ 3 อย่าง:
-  1) ใส่ปีปัจจุบันใน footer
+  ทำ 2 อย่าง:
   2) เปิด/ปิดเมนูมือถือ (toggle)
   3) ทำ Scroll Reveal ด้วย Intersection Observer
 */
 
-/* =========================
-   1) ใส่ปีอัตโนมัติใน footer
-   ========================= */
-const yearEl = document.getElementById("year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
 
 /* =========================
-   2) เมนูมือถือ (toggle)
+   1) เมนูมือถือ (toggle)
    ========================= */
 const toggleBtn = document.querySelector(".nav-toggle");
 if (toggleBtn) {
@@ -27,7 +19,7 @@ if (toggleBtn) {
 }
 
 /* =========================
-   3) Scroll Reveal (Intersection Observer)
+   2) Scroll Reveal (Intersection Observer)
    ========================= */
 const revealEls = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
 

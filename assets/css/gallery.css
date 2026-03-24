@@ -2,164 +2,121 @@
    1. SHARED VARIABLES & ANIMATIONS
    ============================================================ */
 :root {
-  --p1: #ffcfe2;
-  --p2: #d1d1ff;
-  --p3: #e2f9ff;
-  --text-dark: #0f172a;
+  /* ชุดสีใหม่ดึงจากรูปภาพที่คุณแนบมา */
+  --bg-top: #f7f1c1;    /* เหลืองนวลด้านบน */
+  --bg-middle: #ffcada; /* ชมพูพีชช่วงกลาง */
+  --bg-bottom: #fbbfff; /* ชมพูสว่างด้านล่าง */
+  
+  --text-dark: #1e293b;
   --text-muted: #64748b;
   --primary-grad: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-nav: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes navSlideIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(-10px); 
-    filter: blur(5px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-    filter: blur(0); 
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================
-   2. SITE HEADER & NAVIGATION (ทำงานเหมือนกันทุกหน้า)
+   2. GLOBAL & BACKGROUND (ปรับตามรูปภาพ)
    ============================================================ */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  padding: 20px 0;
-  background: transparent;
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* การตั้งค่าพื้นหลังแบบไล่สี 3 ระดับตามรูป */
+  background: linear-gradient(180deg, 
+                var(--bg-top) 0%, 
+                var(--bg-middle) 50%, 
+                var(--bg-bottom) 100%) !important;
+  background-attachment: fixed; /* ให้สีพื้นหลังคงที่เวลา Scroll */
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
 }
 
-.header-inner {
-  max-width: 1300px;
+/* ============================================================
+   3. GALLERY LAYOUT (GRID SYSTEM)
+   ============================================================ */
+.gallery-grid {
+  display: grid !important;
+  /* จอใหญ่: แบ่ง 2 คอลัมน์ (Workspace & Chinese / Landmarks & Daily) */
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 30px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.hero-section {
+  padding-top: 100px;
+}
+
+/* ============================================================
+   4. CHINA CARD & IMAGE GRID (Glassmorphism)
+   ============================================================ */
+.china-card {
+  /* ทำให้การ์ดดูใสและฟุ้งเพื่อให้เข้ากับพื้นหลังสีพาสเทล */
+  background: rgba(255, 255, 255, 0.35) !important;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.4s var(--ease-out);
+  backdrop-filter: blur(15px); /* เอฟเฟกต์กระจกฝ้า */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
+  flex-direction: column;
 }
 
-/* Logo Style */
-.brand-group {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-decoration: none;
+.china-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
-.brand-logo {
-  height: 60px;
-  width: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s var(--ease-out);
+.card-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  padding: 15px;
+  height: 320px;
 }
 
-.brand-group:hover .brand-logo {
-  transform: scale(1.1) rotate(5deg);
+.grid-thumb {
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  transition: transform 0.3s ease;
 }
 
-.brand-text {
+.gallery-info {
+  padding: 25px;
+}
+
+.gallery-info h3 {
+  margin: 5px 0 0;
   font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #1e293b 0%, #64748b 100%);
+}
+
+.grad-text {
+  background: linear-gradient(90deg, #ec4899, #6366f1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Nav Pill Style (Glassmorphism) */
-.nav {
-  display: flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.3); /* ขาวใสแบบ Glass */
-  padding: 6px;
-  border-radius: 100px;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-}
-
-.nav-item {
-  opacity: 0; /* เริ่มต้นที่ 0 เพื่อเล่น Animation */
-  padding: 10px 25px;
-  border-radius: 100px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  transition: all 0.3s var(--ease-nav);
-  animation: navSlideIn 0.8s var(--ease-nav) forwards;
-}
-
-/* Delay สำหรับแต่ละปุ่มเพื่อให้สไลด์เรียงกัน */
-.nav-item:nth-child(1) { animation-delay: 0.2s; }
-.nav-item:nth-child(2) { animation-delay: 0.3s; }
-.nav-item:nth-child(3) { animation-delay: 0.4s; }
-.nav-item:nth-child(4) { animation-delay: 0.5s; }
-
-/* สไตล์เมื่อ Hover หรือเป็นหน้าปัจจุบัน */
-.nav-item:hover, 
-.nav-item.is-active {
-  background: #ffffff;
-  color: #6366f1; /* สีม่วงน้ำเงินเด่นขึ้นมา */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* Mobile Menu Toggle */
-.menu-toggle {
-  display: none;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  padding: 10px 15px;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
 /* ============================================================
-   3. RESPONSIVE NAVIGATION
+   5. RESPONSIVE (เมื่อย่อหน้าจอ หรือแสดงผล 1/4 Screen)
    ============================================================ */
 @media (max-width: 992px) {
-  .menu-toggle { display: block; }
-  
-  .nav {
-    display: none;
-    position: absolute;
-    top: 90px;
-    right: 40px;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    padding: 20px;
-    border-radius: 25px;
-    width: 200px;
-    gap: 10px;
+  .gallery-grid {
+    /* ปรับเป็น 1 คอลัมน์แนวตั้งเมื่อหน้าจอแคบลง */
+    grid-template-columns: 1fr !important;
+    gap: 25px;
   }
 
-  .nav.active {
-    display: flex;
-    animation: fadeIn 0.3s ease forwards;
+  .card-image-grid {
+    height: 280px;
   }
+}
 
-  .nav-item { 
-    opacity: 1; 
-    animation: none; 
-    text-align: center; 
-    width: 100%;
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem !important;
   }
 }

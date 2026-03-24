@@ -5,9 +5,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  /* ใส่สีพื้นหลังไล่เฉดสี ม่วงอ่อน -> ชมพูอ่อน ตามรูปภาพ */
   background: linear-gradient(180deg, #d1d1ff 0%, #ffcfe2 100%);
-  background-attachment: fixed; /* ให้พื้นหลังอยู่กับที่ขณะเลื่อนหน้าจอ */
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
@@ -38,8 +37,14 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* เอฟเฟกต์การเต้นของช่องที่ชนะ */
+@keyframes winPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
 /* ============================================================
-   2. SITE HEADER & NAVIGATION (คงโครงสร้างเดิม)
+   2. SITE HEADER & NAVIGATION
    ============================================================ */
 .site-header {
   position: fixed;
@@ -138,7 +143,7 @@ body {
 }
 
 /* ============================================================
-   3. PROJECTS PAGE - TIC TAC TOE STYLES (ปรับขนาดให้ใหญ่ขึ้น)
+   3. PROJECTS PAGE - TIC TAC TOE STYLES
    ============================================================ */
 .hero-section {
   padding-top: 140px;
@@ -165,7 +170,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Layout for Game */
 .ttt-wrap {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr; 
@@ -173,9 +177,7 @@ body {
   align-items: center;
 }
 
-.ttt-left {
-  text-align: center;
-}
+.ttt-left { text-align: center; }
 
 .ttt-status {
   font-size: 1.4rem; 
@@ -186,7 +188,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* ปรับขนาดตารางหลัก (The Board) */
 .ttt-board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -222,7 +223,15 @@ body {
 .ttt-cell.x-mark { color: #6366f1; }
 .ttt-cell.o-mark { color: #ec4899; }
 
-/* Scoreboard Panel */
+/* 🟢 ส่วนที่เพิ่ม: เอฟเฟกต์สีเขียวเมื่อชนะ 🟢 */
+.ttt-cell.win {
+  background-color: #22c55e !important; /* สีเขียวสด */
+  color: #ffffff !important;           /* เปลี่ยนสี X หรือ O เป็นสีขาว */
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  animation: winPulse 0.5s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
 .ttt-panel-title {
   font-size: 1.6rem;
   font-weight: 800;
@@ -264,7 +273,6 @@ body {
 .ttt-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
 .ttt-num { font-size: 1.4rem; font-weight: 800; color: var(--text-dark); }
 
-/* Winner Section */
 .ttt-winner-box {
   background: var(--primary-grad);
   color: white;
@@ -276,7 +284,6 @@ body {
   margin-bottom: 15px;
 }
 
-/* Buttons */
 .social-btn {
   height: 55px;
   font-size: 1.1rem;
@@ -286,7 +293,7 @@ body {
 }
 
 /* ============================================================
-   4. RESPONSIVE DESIGN (คงการเรียงลำดับเดิมไว้)
+   4. RESPONSIVE DESIGN
    ============================================================ */
 @media (max-width: 992px) {
   .menu-toggle { display: block; }
@@ -325,9 +332,7 @@ body {
     gap: 40px;
   }
   
-  .ttt-left {
-    order: 1;
-  }
+  .ttt-left { order: 1; }
   
   .ttt-right {
     order: 2;
@@ -341,17 +346,7 @@ body {
 
 @media (max-width: 480px) {
   .hero-glass-container { padding: 35px 20px !important; }
-  
-  .ttt-board {
-    max-width: 320px; 
-    gap: 10px;
-  }
-  
-  .ttt-cell {
-    font-size: 2.2rem;
-  }
-
-  .ttt-status {
-    font-size: 1.1rem;
-  }
+  .ttt-board { max-width: 320px; gap: 10px; }
+  .ttt-cell { font-size: 2.2rem; }
+  .ttt-status { font-size: 1.1rem; }
 }

@@ -1,0 +1,96 @@
+/* ============================================================
+   HEADER LOCK (FIXED NAVIGATION) - main.css
+   ============================================================ */
+
+/* 1. ส่วนบอดี้: ดันเนื้อหาลงมา */
+body {
+    margin: 0;
+    padding-top: 100px; 
+}
+
+/* 2. ตัว Header หลัก: ล็อคตำแหน่ง + ทำพื้นหลังใสแบบกระจกฝ้า */
+.site-header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    padding: 15px 0; /* ปรับ Padding ให้ดูเพรียวขึ้น */
+    
+    /* --- เพิ่มพื้นหลังใส (Glassmorphism) ตลอดแนว --- */
+    background: rgba(255, 255, 255, 0.2); /* สีขาวจางมาก ๆ */
+    backdrop-filter: blur(10px); /* เอฟเฟกต์เบลอพื้นหลัง */
+    -webkit-backdrop-filter: blur(10px); /* สำหรับ Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* เส้นขอบล่างบาง ๆ ให้ดูมีมิติ */
+    
+    transition: all 0.3s ease;
+}
+
+/* 3. จัดระเบียบองค์ประกอบภายใน */
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* 4. โลโก้ (ฝั่งซ้าย) */
+.brand-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 5. แถบเมนู Nav Pill (ฝั่งขวา) */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.5); /* พื้นหลังของ Pill ให้ขาวขึ้นอีกนิด */
+    padding: 6px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* 6. รายการเมนู */
+.nav-item {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1e293b;
+    padding: 10px 22px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+/* 7. ปุ่มเมนูที่ Active (เช่นหน้า Gallery) */
+.nav-item.is-active {
+    background: #ffffff;
+    color: #6366f1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 8. Mobile Responsive */
+@media (max-width: 992px) {
+    .header-inner {
+        padding: 0 20px;
+    }
+    .nav {
+        display: none; 
+    }
+}
