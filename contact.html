@@ -150,8 +150,8 @@
   </main>
 
   <script>
-    // ส่วนควบคุมเมนูมือถือ
-    document.addEventListener('DOMContentLoaded', () => {
+   
+   document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.getElementById('menu-toggle');
       const mainNav = document.getElementById('main-nav');
       if (menuToggle && mainNav) {
@@ -166,13 +166,12 @@
         });
       }
 
-      // จุดที่ 2: สคริปต์ส่งข้อมูลเข้าอีเมลโดยตรงแบบไม่รีเฟรชหน้า
       const scriptURL = 'https://script.google.com/macros/s/AKfycbyOh2qJWxnA4ZNHdoWKeI31uX4yfgizv_5EoJPuy7YBQpAReOKlqyBYNNiBnw9eLgbu/exec';
       const form = document.getElementById('contact-form');
       const btn = document.getElementById('submit-btn');
 
       form.addEventListener('submit', e => {
-        e.preventDefault(); // ป้องกันการรีโหลดหน้า
+        e.preventDefault(); 
         btn.disabled = true;
         btn.innerText = 'Sending...';
 
