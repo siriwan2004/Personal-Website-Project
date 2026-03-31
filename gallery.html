@@ -3,40 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>China Journey | Siriwan Portfolio</title>
+  <title>Gallery | Siriwan Portfolio</title>
   
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/index.css">
   <link rel="stylesheet" href="assets/css/gallery.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
-    /* 1. เปลี่ยนสีพื้นหลังตามรูปภาพที่ระบุ */
     body {
       background: linear-gradient(180deg, #f7f1c1 0%, #ffcada 50%, #fbbfff 100%) !important;
       background-attachment: fixed;
       margin: 0;
     }
 
-    /* 2. จัด Layout ให้แสดงเป็นคู่ (Workspace & Team คู่กับ Chinese / Landmarks คู่กับ Daily Life) */
     .gallery-grid {
       display: grid !important;
-      /* หน้าจอใหญ่แบ่ง 2 คอลัมน์เท่ากัน */
       grid-template-columns: repeat(2, 1fr) !important; 
       gap: 30px;
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    /* 3. Responsive: ถ้าหน้าจอแคบ (เช่นย่อเหลือ 1/4 หรือมือถือ) ให้เรียงยาวแนวตั้ง */
     @media (max-width: 992px) {
       .gallery-grid {
         grid-template-columns: 1fr !important;
       }
     }
 
-    /* --- สไตล์ดั้งเดิมของคุณ (คงไว้ 100%) --- */
     .china-card {
       background: rgba(255, 255, 255, 0.4) !important; 
       border-radius: 25px;
@@ -68,11 +62,13 @@
       background-position: center;
       background-color: #f0f0f0;
       border-radius: 15px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      cursor: pointer; /* เพิ่มเพื่อให้รู้ว่ากดได้ */
     }
 
-    .china-card:hover .grid-thumb {
+    .grid-thumb:hover {
       transform: scale(1.02);
+      filter: brightness(0.9);
     }
     
     .grad-text {
@@ -81,10 +77,46 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .gallery-info h3 {
-      font-size: 1.5rem; /* ปรับขนาดให้เด่นขึ้นหลังจากเอา Tag ออก */
-      margin: 0;
-      font-weight: 800;
+    /* --- Lightbox Styles --- */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      transform: scale(0.8);
+      transition: transform 0.3s ease-out;
+    }
+
+    .lightbox-overlay.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
     }
   </style>
 
@@ -93,7 +125,10 @@
 
 <body class="theme-4" data-page="gallery" id="top">
 
-  <div class="static-bg"></div>
+  <div class="lightbox-overlay" id="lightbox">
+    <span class="close-btn">&times;</span>
+    <img src="" alt="Full View" class="lightbox-img" id="lightbox-img">
+  </div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -133,49 +168,49 @@
           
           <div class="gallery-card china-card">
             <div class="card-image-grid">
-              <div class="grid-thumb" style="background-image: url('assets/images/office-1.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/office-2.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/team-1.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/team-2.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/t1.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/t2.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/t3.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/t4.jpg');"></div>
             </div>
             <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
-              <h3 style="color: var(--text-dark);">Workspace & Team</h3>
+              <h3 style="color: #333;">Workspace & Team</h3>
             </div>
           </div>
 
           <div class="gallery-card china-card">
             <div class="card-image-grid">
-              <div class="grid-thumb" style="background-image: url('assets/images/food-mala.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/food-tanghulu.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/food-dumplings.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/food-local.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/f1.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/f2.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/f3.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/f4.jpg');"></div>
             </div>
             <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
-              <h3 style="color: var(--text-dark);">Chinese Cuisine</h3>
+              <h3 style="color: #333;">Chinese Cuisine</h3>
             </div>
           </div>
 
           <div class="gallery-card china-card">
             <div class="card-image-grid">
-              <div class="grid-thumb" style="background-image: url('assets/images/landmark-wall.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/landmark-palace.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/landmark-tower.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/landmark-modern.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/l1.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/l2.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/l3.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/l4.jpg');"></div>
             </div>
             <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
-              <h3 style="color: var(--text-dark);">Landmarks</h3>
+              <h3 style="color: #333;">Landmarks</h3>
             </div>
           </div>
 
           <div class="gallery-card china-card">
             <div class="card-image-grid">
-              <div class="grid-thumb" style="background-image: url('assets/images/tech-train.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/tech-pay.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/daily-metro.jpg');"></div>
-              <div class="grid-thumb" style="background-image: url('assets/images/daily-bike.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/d1.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/d2.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/d3.jpg');"></div>
+              <div class="grid-thumb" style="background-image: url('assets/images/d4.jpg');"></div>
             </div>
             <div class="gallery-info" style="padding: 24px; flex-grow: 1;">
-              <h3 style="color: var(--text-dark);">Daily Life</h3>
+              <h3 style="color: #333;">Daily Life</h3>
             </div>
           </div>
 
@@ -186,8 +221,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. Menu Toggle Logic
       const menuToggle = document.getElementById('menu-toggle');
       const mainNav = document.getElementById('main-nav');
+
       if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -198,17 +235,29 @@
             icon.classList.toggle('fa-xmark');
           }
         });
-        document.addEventListener('click', (e) => {
-          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-            mainNav.classList.remove('active');
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-xmark');
-            }
-          }
-        });
       }
+
+      // 2. Lightbox Logic (คลิกรูปเพื่อขยาย)
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const thumbs = document.querySelectorAll('.grid-thumb');
+
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const bgImg = getComputedStyle(thumb).backgroundImage;
+          const url = bgImg.slice(5, -2); // ตัดเอาเฉพาะ path รูปภาพ
+          
+          lightboxImg.src = url;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden'; // ล็อคการสกรูลหน้าจอ
+        });
+      });
+
+      // ปิด Lightbox เมื่อคลิกพื้นหลังหรือปุ่มปิด
+      lightbox.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto'; // คืนค่าการสกรูลหน้าจอ
+      });
     });
   </script>
 

@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    /* ไล่เฉดสีตามรูปภาพ: ส้มชมพู -> ม่วงชมพู -> ม่วงน้ำเงิน */
     background: linear-gradient(180deg, #ffd1cc 0%, #f1ccf1 50%, #d1d1ff 100%);
     background-attachment: fixed;
     min-height: 100vh;
@@ -13,22 +12,21 @@ body {
 }
 
 /* ============================================================
-   1. HERO SECTION (Layout หลัก)
+   1. HERO SECTION 
    ============================================================ */
 .hero-section {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 120px;
-    padding-bottom: 60px;
+    padding-top: 120px; 
+    padding-bottom: 80px;
 }
 
-/* กล่องหลัก Glassmorphism */
 .hero-glass-container {
     width: 90%;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto; 
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -62,6 +60,13 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.nav-item {
+    padding: 10px 25px; 
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
 /* ============================================================
    3. CARD CONTENT
    ============================================================ */
@@ -86,10 +91,10 @@ body {
 .section-title {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 /* ============================================================
@@ -98,12 +103,12 @@ body {
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px;
 }
 
 .info-item {
     background: rgba(255, 255, 255, 0.6);
-    padding: 15px 20px;
+    padding: 18px 22px;
     border-radius: 15px;
     font-size: 0.95rem;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -140,8 +145,8 @@ body {
     height: 70px;
     object-fit: contain;
     background: white;
-    padding: 5px;
-    border-radius: 12px;
+    padding: 8px;
+    border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
@@ -164,16 +169,17 @@ body {
 }
 
 /* ============================================================
-   6. RESPONSIVE DESIGN (Education อยู่ตรงกลางเมื่อจอเล็ก)
+   6. RESPONSIVE DESIGN
    ============================================================ */
 @media (max-width: 768px) {
     .hero-section {
-        padding-top: 100px;
+        padding-top: 120px; 
     }
 
     .hero-glass-container {
         padding: 25px 20px;
         width: 92%;
+        margin-top: 10px;
     }
 
     .cv-card {
@@ -184,7 +190,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    /* 👇 ย้ายการศึกษามาไว้ตรงกลางเมื่อจอเล็ก */
     .edu-item {
         flex-direction: column;
         text-align: center;
@@ -204,19 +209,5 @@ body {
     .edu-logo {
         width: 85px;
         height: 85px;
-    }
-
-    .edu-content h3 {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2.2rem;
-    }
-    
-    .section-title {
-        font-size: 1.3rem;
     }
 }

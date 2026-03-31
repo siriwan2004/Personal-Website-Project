@@ -1,18 +1,11 @@
-/* ========================================
-   MAIN STYLES - Cloud Glassmorphism Portfolio
-   (Updated Colors based on your Image)
-   ======================================== */
-
 :root {
-  /* ปรับแต่งสีพาสเทลให้ตรงตามรูปภาพ (ชมพู -> ม่วง -> ฟ้า) */
-  --p1: #fbcfe8; /* ชมพูพาสเทลด้านบน */
-  --p2: #d1d1ff; /* ม่วงฟ้าพาสเทลกลาง */
-  --p3: #e0f2fe; /* ฟ้าพาสเทลด้านล่าง */
+  --p1: #fbcfe8; 
+  --p2: #d1d1ff; 
+  --p3: #e0f2fe; 
   
   --text-dark: #0f172a;
   --text-muted: #64748b;
   
-  /* ปรับ Gradient หลักให้ดูนุ่มนวลเข้ากับโทนรูปภาพ */
   --primary-grad: linear-gradient(135deg, #a5b4fc 0%, #f9a8d4 100%);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-nav: cubic-bezier(0.22, 1, 0.36, 1);
@@ -32,7 +25,7 @@ body {
   line-height: 1.6;
 }
 
-/* 1. STATIC BACKGROUND - ปรับตำแหน่งกระจายสีตามรูป */
+/* 1. STATIC BACKGROUND */
 .static-bg {
   position: fixed;
   inset: 0;
@@ -40,9 +33,9 @@ body {
     radial-gradient(circle at 20% 15%, var(--p1) 0%, transparent 50%),
     radial-gradient(circle at 80% 85%, var(--p2) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, var(--p3) 0%, transparent 60%);
-  filter: blur(80px); /* ลด blur เล็กน้อยเพื่อให้สีดูสดใสขึ้นแบบในรูป */
+  filter: blur(80px); 
   z-index: -1;
-  opacity: 0.9; /* เพิ่มความเข้มเพื่อให้สีพื้นหลังชัดเจนขึ้น */
+  opacity: 0.9; 
 }
 
 /* 2. SITE HEADER & NAVIGATION */
@@ -113,7 +106,7 @@ body {
 .nav {
   display: flex;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.3); /* ปรับให้ใสขึ้นเพื่อให้เห็นสีพื้นหลังใหม่ชัดขึ้น */
+  background: rgba(255, 255, 255, 0.3); 
   padding: 6px;
   border-radius: 100px;
   backdrop-filter: blur(15px);
@@ -185,7 +178,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 20px 60px;
+  padding: 40px 20px 60px;
 }
 
 .hero-glass-container {
@@ -197,8 +190,8 @@ body {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 60px;
-  padding: 80px;
-  background: rgba(255, 255, 255, 0.25); /* ลด opacity ลงเล็กน้อยเพื่อความ Glassy */
+  padding: 120px 80px;
+  background: rgba(255, 255, 255, 0.25); 
   backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 60px;
@@ -245,7 +238,7 @@ body {
   animation: slideInOnce 1.2s var(--ease-out) forwards 1.4s;
 }
 
-/* 5. HERO MEDIA (วงกลม-อยู่นิ่งพร้อม Animation ขยาย) */
+/* 5. HERO MEDIA */
 @keyframes zoomOutOnce {
   to { opacity: 1; transform: scale(1); }
 }
@@ -261,7 +254,7 @@ body {
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 50%;
-  border: 12px solid rgba(255, 255, 255, 0.6); /* ขอบขาวแบบโปร่งแสงเล็กน้อย */
+  border: 12px solid rgba(255, 255, 255, 0.6); 
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
   background: #fff;
   

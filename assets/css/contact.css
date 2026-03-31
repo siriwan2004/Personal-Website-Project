@@ -1,47 +1,49 @@
-/* ============================================================
-   CONTACT PAGE - PINK TO ORANGE GRADIENT THEME (LEFT ALIGNED FORM)
-   ============================================================ */
-
 body.theme-3 {
     background: linear-gradient(180deg, #ffafbd 0%, #ffc3a0 100%);
     background-attachment: fixed;
     min-height: 100vh;
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start;
+    font-family: 'Inter', -apple-system, sans-serif; 
 }
 
-/* Glass Container หลัก - จัดโครงสร้างแนวตั้งเพื่อให้หัวข้อ Get in Touch อยู่บนสุด */
 .hero-glass-container {
     position: relative;
     z-index: 2;
-    max-width: 1200px;
-    width: 92%;
+    max-width: 1400px; 
+    width: 95%;        
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    gap: 40px;
-    padding: 60px 40px;
-    background: rgba(255, 255, 255, 0.25);
+    gap: 45px;         
+    margin: 100px auto 60px auto; 
+    padding: 60px 80px; 
+    
+    background: rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 60px; 
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
-    margin: 40px auto;
+    box-sizing: border-box;
 }
 
-/* --- ส่วนหัวข้อ Get in Touch (อยู่บนสุดตรงกลาง) --- */
 .contact-header {
     text-align: center;
-    max-width: 800px;
     width: 100%;
 }
 
 .contact-header h1 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-size: clamp(2.8rem, 6vw, 4.5rem); 
     font-weight: 800;
-    margin: 0 0 15px 0;
+    margin: 0;
     color: #2d3748;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
 }
 
 .touch-text {
@@ -49,161 +51,191 @@ body.theme-3 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    display: inline-block;
 }
 
 .hero-subtitle {
     color: #4a5568;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin: 0 auto;
-    text-align: center;
-    max-width: 600px;
+    font-size: 1.25rem;
+    margin: 20px auto 0 auto;
+    max-width: 700px;
+    opacity: 0.8;
 }
 
-/* --- Layout การ์ดวางข้างกันในจอใหญ่ --- */
 .contact-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* แบ่งครึ่งเท่ากัน */
-    gap: 30px;
+    grid-template-columns: 1.1fr 0.9fr; 
+    gap: 40px;
     width: 100%;
+    max-width: 1200px; 
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 35px;
-    padding: 40px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
-    height: 100%;
+    border-radius: 40px;
+    padding: 50px; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
 }
 
 .card h2 {
     color: #2d3748;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    margin-top: 0;
     margin-bottom: 35px;
-    text-align: left; /* แก้ไข: หัวข้อการ์ดชิดซ้าย */
+    font-weight: 700;
 }
 
-/* --- ส่วนของ Form (แก้ไข: ให้ชิดซ้ายทั้งหมด) --- */
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* แก้ไข: ให้ Label และ Input ชิดซ้าย */
     gap: 10px;
-    width: 100%;
 }
 
 .contact-form label {
     font-weight: 700;
-    color: #2d3748;
     font-size: 1rem;
-    text-align: left; /* แก้ไข: ตัวหนังสือ Label ชิดซ้าย */
+    color: #2d3748;
     padding-left: 5px;
 }
 
 .contact-form input, 
 .contact-form textarea {
     width: 100%;
-    padding: 15px 22px;
-    border-radius: 18px;
+    padding: 18px 24px;
+    border-radius: 22px;
     border: 1px solid rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     font-size: 1rem;
     color: #2d3748;
     outline: none;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    background: white;
+    border-color: #ec4899;
+    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.1);
 }
 
 .submit-btn {
     background: #ec4899;
     color: white;
-    padding: 16px 45px;
+    padding: 18px 50px;
     border: none;
     border-radius: 50px;
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.3s ease;
-    align-self: flex-start; /* แก้ไข: ปุ่มชิดซ้าย */
-    margin-top: 15px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    align-self: flex-start;
+    margin-top: 10px;
 }
 
 .submit-btn:hover {
     background: #db2777;
-    transform: translateY(-2px);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(219, 39, 119, 0.3);
 }
 
-/* --- ส่วนของ Information (คงเดิม: เรียงไอคอนขาว-ดำชิดซ้าย) --- */
 .info-list {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    width: 100%;
+    gap: 30px;
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-    width: 100%;
+    gap: 25px;
 }
 
 .info-icon-bw {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: #ffffff; 
-    color: #000000 !important; 
-    border-radius: 15px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     flex-shrink: 0;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .info-text {
-    display: flex;
-    flex-direction: column;
     text-align: left;
 }
 
 .info-label {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: #64748b;
-    margin: 0;
+    margin: 0 0 4px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .info-value {
     font-weight: 700;
     color: #2d3748;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     margin: 0;
-    word-break: break-all;
 }
 
-/* =========================
-   Responsive 
-   ========================= */
-@media (max-width: 992px) {
-    .contact-layout {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero-glass-container {
-        padding: 40px 20px;
-    }
+.info-icon-bw i {
+    color: #000000 !important;
+}
 
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 1200px) {
+    .hero-glass-container {
+        padding: 40px 50px;
+    }
+    .card {
+        padding: 35px;
+    }
+}
+
+/* สำหรับ Tablet */
+@media (max-width: 1024px) {
+    .contact-layout {
+        grid-template-columns: 1fr; 
+        max-width: 700px;
+        gap: 30px;
+    }
+    .hero-glass-container {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-glass-container {
+        width: 92%;
+        margin-top: 100px;
+        padding: 30px 20px;
+        border-radius: 40px;
+    }
+    .contact-header h1 {
+        font-size: 2.5rem;
+    }
+    .card {
+        padding: 30px 20px;
+        border-radius: 30px;
+    }
     .submit-btn {
-        width: 100%;
+        width: 100%; 
     }
 }
