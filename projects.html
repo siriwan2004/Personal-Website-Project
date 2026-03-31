@@ -55,6 +55,20 @@
             <h2 style="margin-bottom: 15px; color: var(--text-dark);">Tic Tac Toe Game</h2>
             <div class="ttt-status" id="tttStatus">Turn: X</div>
 
+             <div id="tttModeText" style="text-align:center; margin-bottom:10px; font-weight:700; color:var(--text-dark);">
+              Mode: Player vs Player
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:10px; margin-bottom:15px;">
+            <button id="modePVP" class="social-btn" style="width:auto; padding:8px 20px; border-radius:20px;">
+              👥 PVP
+            </button>
+
+            <button id="modeCPU" class="social-btn" style="width:auto; padding:8px 20px; border-radius:20px;">
+              🤖 AI
+            </button>
+          </div>
+
             <div class="ttt-board" id="tttBoard">
               <button class="ttt-cell" type="button"></button>
               <button class="ttt-cell" type="button"></button>
@@ -116,34 +130,26 @@
   </main>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuToggle = document.getElementById('menu-toggle');
-      const mainNav = document.getElementById('main-nav');
+function openGame(game) {
 
-      if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', (e) => {
-          e.stopPropagation();
-          mainNav.classList.toggle('active');
-          
-          const icon = menuToggle.querySelector('i');
-          if (icon) {
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-xmark');
-          }
-        });
+  const xo = document.getElementById("xoGame");
+  const mole = document.getElementById("moleGame");
 
-        document.addEventListener('click', (e) => {
-          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-            mainNav.classList.remove('active');
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-xmark');
-            }
-          }
-        });
-      }
-    });
-  </script>
+  xo.style.display = "none";
+  mole.style.display = "none";
+
+  if (game === "xo") {
+    xo.style.display = "block";
+
+    // 🔥 รีเซ็ตเกมทุกครั้ง
+    if (typeof restartGame === "function") {
+      restartGame();
+    }
+
+  } else {
+    mole.style.display = "block";
+  }
+}
+</script>
 </body>
 </html>
