@@ -90,6 +90,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.5px;
   background: linear-gradient(135deg, #1e293b 0%, #64748b 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -166,6 +167,7 @@ body {
 
 .grad-text {
   background: var(--primary-grad);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
